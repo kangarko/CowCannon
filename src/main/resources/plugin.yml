@@ -2,3 +2,10 @@ name: CowCannon
 version: '${project.version}'
 main: org.mineacademy.cowcannon.CowCannon
 api-version: '1.13'
+commands:
+  cow:
+    description: "Spawn an exploding cow"
+    usage: "/cow [baby]"
+    aliases: [ cowcannon ]
+    permission: cowcannon.command.cow
+    permission-message: "You do not have permission to spawn an exploding cow"
