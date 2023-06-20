@@ -1,0 +1,4 @@
+name: CowCannon
+version: '${project.version}'
+main: org.mineacademy.cowcannon.CowCannon
+api-version: '1.13'
