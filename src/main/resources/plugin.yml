@@ -11,6 +11,6 @@ commands:
     permission-message: "You do not have permission to spawn an exploding cow"
 permissions:
   cowcannon.command.cow:
-    default: false
+    default: op
   cowcannon.cow.use:
-    default: false
+    default: true
