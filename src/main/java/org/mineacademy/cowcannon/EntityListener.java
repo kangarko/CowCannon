@@ -1,7 +1,6 @@
 package org.mineacademy.cowcannon;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Cow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -51,16 +50,14 @@ public class EntityListener implements Listener {
 
 		System.out.println("After: " + permissions);*/
 
-		if (entity instanceof Cow && entity.hasMetadata("CowCannon") && player.getItemInHand().getType() == Material.BUCKET) {
+		if (entity.getType() == CowSettings.getInstance().getExplodingType() && entity.hasMetadata("CowCannon") && player.getItemInHand().getType() == Material.BUCKET) {
 			if (!player.hasPermission("cowcannon.cow.use")) {
 				player.sendMessage("You don't have permission to milk cows ;)");
 
 				return;
 			}
 
-			Cow cow = (Cow) entity;
-
-			cow.getWorld().createExplosion(cow.getLocation(), 2.5F);
+			entity.getWorld().createExplosion(entity.getLocation(), 2.5F);
 		}
 	}
 }

@@ -8,6 +8,7 @@ public final class CowCannon extends JavaPlugin {
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
 		getCommand("cow").setExecutor(new CowCommand());
+		CowSettings.getInstance().load();
 	}
 
 	@Override
