@@ -9,6 +9,10 @@ commands:
     aliases: [ cowcannon ]
     permission: cowcannon.command.cow
     permission-message: "You do not have permission to spawn an exploding cow"
+  butterfly:
+    description: "Toggle particle effect"
+    usage: "/butterfly"
+    permission: cowcannon.command.butterfly
 permissions:
   cowcannon.command.cow:
     default: op

@@ -1,18 +1,28 @@
 package org.mineacademy.cowcannon;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 public final class CowCannon extends JavaPlugin {
+
+	private BukkitTask task;
 
 	@Override
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
+
 		getCommand("cow").setExecutor(new CowCommand());
+		getCommand("wings").setExecutor(new ButterflyCommand());
+
 		CowSettings.getInstance().load();
+
+		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
 	}
 
 	@Override
 	public void onDisable() {
+		if (task != null && !task.isCancelled())
+			task.cancel();
 	}
 
 	public static CowCannon getInstance() {
