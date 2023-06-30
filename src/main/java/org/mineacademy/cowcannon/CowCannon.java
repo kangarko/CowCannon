@@ -12,7 +12,7 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
 
 		getCommand("cow").setExecutor(new CowCommand());
-		getCommand("wings").setExecutor(new ButterflyCommand());
+		getCommand("butterfly").setExecutor(new ButterflyCommand());
 
 		CowSettings.getInstance().load();
 
