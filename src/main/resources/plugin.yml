@@ -18,6 +18,10 @@ commands:
     description: "Spawns a display entity"
     usage: "/displayentity"
     permission: cowcannon.command.displayentity
+  customitem:
+    description: "Gives you a custom item"
+    usage: "/customitem"
+    permission: cowcannon.command.customitem
 permissions:
   cowcannon.command.cow:
     default: op

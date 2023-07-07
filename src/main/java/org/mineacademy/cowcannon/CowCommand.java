@@ -9,7 +9,7 @@ import org.bukkit.entity.Ageable;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -75,8 +75,8 @@ public class CowCommand implements CommandExecutor, TabExecutor {
 				return true;
 			}
 		}
-
-		entity.setMetadata("CowCannon", new FixedMetadataValue(CowCannon.getInstance(), true));
+		
+		entity.getPersistentDataContainer().set(Keys.CUSTOM_COW, PersistentDataType.BOOLEAN, true);
 		entity.setCustomName(ChatColor.RED + "Milk Me");
 		entity.setCustomNameVisible(true);
 

@@ -14,6 +14,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("cow").setExecutor(new CowCommand());
 		getCommand("butterfly").setExecutor(new ButterflyCommand());
 		getCommand("displayentity").setExecutor(new DisplayEntityCommand());
+		getCommand("customitem").setExecutor(new CustomItemCommand());
 
 		CowSettings.getInstance().load();
 

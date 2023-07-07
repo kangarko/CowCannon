@@ -1,6 +1,5 @@
 package org.mineacademy.cowcannon;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.permissions.PermissionAttachment;
+import org.bukkit.persistence.PersistentDataContainer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,14 +50,22 @@ public class EntityListener implements Listener {
 
 		System.out.println("After: " + permissions);*/
 
-		if (entity.getType() == CowSettings.getInstance().getExplodingType() && entity.hasMetadata("CowCannon") && player.getItemInHand().getType() == Material.BUCKET) {
-			if (!player.hasPermission("cowcannon.cow.use")) {
-				player.sendMessage("You don't have permission to milk cows ;)");
+		if (player.getItemInHand().getItemMeta() != null) {
+			PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
+			PersistentDataContainer handItemContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
 
-				return;
+			if (entity.getType() == CowSettings.getInstance().getExplodingType()
+					&& entityContainer.has(Keys.CUSTOM_COW)
+					&& handItemContainer.has(Keys.CUSTOM_BUCKET)) {
+				
+				if (!player.hasPermission("cowcannon.cow.use")) {
+					player.sendMessage("You don't have permission to milk cows ;)");
+
+					return;
+				}
+
+				entity.getWorld().createExplosion(entity.getLocation(), 2.5F);
 			}
-
-			entity.getWorld().createExplosion(entity.getLocation(), 2.5F);
 		}
 	}
 }
