@@ -10,11 +10,13 @@ public final class CowCannon extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
+		getServer().getPluginManager().registerEvents(new GuiListener(), this);
 
 		getCommand("cow").setExecutor(new CowCommand());
 		getCommand("butterfly").setExecutor(new ButterflyCommand());
 		getCommand("displayentity").setExecutor(new DisplayEntityCommand());
 		getCommand("customitem").setExecutor(new CustomItemCommand());
+		getCommand("gui").setExecutor(new GuiCommand());
 
 		CowSettings.getInstance().load();
 

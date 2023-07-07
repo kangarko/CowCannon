@@ -22,6 +22,10 @@ commands:
     description: "Gives you a custom item"
     usage: "/customitem"
     permission: cowcannon.command.customitem
+  gui:
+    description: "Opens a GUI"
+    usage: "/gui"
+    permission: cowcannon.command.gui
 permissions:
   cowcannon.command.cow:
     default: op
