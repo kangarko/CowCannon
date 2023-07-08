@@ -1,26 +1,6 @@
-package org.mineacademy.cowcannon;
+/*package org.mineacademy.cowcannon;
 
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffectType;
-import org.jetbrains.annotations.Nullable;
-import org.mineacademy.fo.ItemUtil;
-import org.mineacademy.fo.collection.StrictMap;
-import org.mineacademy.fo.menu.Menu;
-import org.mineacademy.fo.menu.MenuContainer;
-import org.mineacademy.fo.menu.MenuPagged;
-import org.mineacademy.fo.menu.button.Button;
-import org.mineacademy.fo.menu.button.ButtonMenu;
 import org.mineacademy.fo.menu.button.StartPosition;
-import org.mineacademy.fo.menu.button.annotation.Position;
-import org.mineacademy.fo.menu.model.ItemCreator;
-import org.mineacademy.fo.menu.model.MenuClickLocation;
-import org.mineacademy.fo.remain.CompMaterial;
-
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class MainMenu extends Menu {
 
@@ -178,4 +158,4 @@ public class MainMenu extends Menu {
 			return slot <= 9 * 1;
 		}
 	}
-}
+}*/
