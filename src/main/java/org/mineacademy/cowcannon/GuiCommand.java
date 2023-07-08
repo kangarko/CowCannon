@@ -1,16 +1,9 @@
 package org.mineacademy.cowcannon;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.jetbrains.annotations.NotNull;
 
 public class GuiCommand implements CommandExecutor {
@@ -25,7 +18,9 @@ public class GuiCommand implements CommandExecutor {
 
 		Player player = (Player) sender;
 
-		Inventory inventory = Bukkit.createInventory(player, 9 * 3, ChatColor.DARK_BLUE + "Preferences Menu");
+		new MainMenu().displayTo(player);
+
+		/*Inventory inventory = Bukkit.createInventory(player, 9 * 3, ChatColor.DARK_BLUE + "Preferences Menu");
 
 		ItemStack getDiamondButton = new ItemStack(Material.DIAMOND);
 		ItemMeta diamondMeta = getDiamondButton.getItemMeta();
@@ -47,7 +42,7 @@ public class GuiCommand implements CommandExecutor {
 		inventory.setItem(15, clearWeatherButton);
 
 		player.openInventory(inventory);
-		player.setMetadata("OpenedMenu", new FixedMetadataValue(CowCannon.getInstance(), "Preferences Menu"));
+		player.setMetadata("OpenedMenu", new FixedMetadataValue(CowCannon.getInstance(), "Preferences Menu"));*/
 
 		return true;
 	}
