@@ -2,6 +2,13 @@
 
 import org.mineacademy.fo.menu.button.StartPosition;
 
+// IMPORTANT:
+// This class is commented out because it is using Foundation, a library
+// to help you create advanced, paginated and animated menus fast.
+// We do not use it in the vast majority of our YouTube videos, you can just
+// import it from https://github.com/kangarko/Foundation
+//
+
 public class MainMenu extends Menu {
 
 	@Position(start = StartPosition.CENTER, value = -2)
