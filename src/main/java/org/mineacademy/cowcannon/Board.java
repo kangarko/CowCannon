@@ -31,15 +31,15 @@ public class Board implements Runnable {
 		Objective objective = scoreboard.registerNewObjective(CowCannon.getInstance().getName(), "yummy");
 
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-		objective.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "COW PROTOTYPE");
+		objective.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "ATTENTION FOLKS");
 
 		objective.getScore(ChatColor.WHITE + " ").setScore(8);
-		objective.getScore(ChatColor.WHITE + "Games in this lobby are").setScore(7);
-		objective.getScore(ChatColor.WHITE + "under heavy development").setScore(6);
-		objective.getScore(ChatColor.RED + " ").setScore(5);
-		objective.getScore(ChatColor.WHITE + "Report bugs and leave").setScore(4);
-		objective.getScore(ChatColor.WHITE + "feedback at").setScore(3);
-		objective.getScore(ChatColor.YELLOW + "mineacademy.org/project-orion").setScore(2);
+		objective.getScore(ChatColor.WHITE + "You're watching world's").setScore(7);
+		objective.getScore(ChatColor.WHITE + "best Minecraft plugin.").setScore(6);
+		objective.getScore(ChatColor.WHITE + "tutorial series.").setScore(5);
+		objective.getScore(ChatColor.RED + " ").setScore(4);
+		objective.getScore(ChatColor.WHITE + "Join us at").setScore(3);
+		objective.getScore(ChatColor.RED + "mineacademy.org/join").setScore(2);
 		objective.getScore(ChatColor.GREEN + " ").setScore(1);
 		//objective.getScore(ChatColor.WHITE + "Walked: 0cm").setScore(0);
 
@@ -58,7 +58,7 @@ public class Board implements Runnable {
 		Scoreboard scoreboard = player.getScoreboard();
 		Team team1 = scoreboard.getTeam("team1");
 
-		team1.setSuffix(ChatColor.YELLOW + "" + (player.getStatistic(Statistic.WALK_ONE_CM) + player.getStatistic(Statistic.SPRINT_ONE_CM)) + "cm");
+		team1.setSuffix(ChatColor.GRAY + "" + (player.getStatistic(Statistic.WALK_ONE_CM) + player.getStatistic(Statistic.SPRINT_ONE_CM)) + "cm");
 	}
 
 	public static Board getInstance() {
