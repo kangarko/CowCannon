@@ -21,6 +21,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("gui").setExecutor(new GuiCommand());
 
 		CowSettings.getInstance().load();
+		CustomRecipes.register();
 
 		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
 		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
