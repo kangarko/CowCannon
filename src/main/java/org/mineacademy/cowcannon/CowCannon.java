@@ -6,6 +6,7 @@ import org.bukkit.scheduler.BukkitTask;
 public final class CowCannon extends JavaPlugin {
 
 	private BukkitTask task;
+	private BukkitTask task2;
 
 	@Override
 	public void onEnable() {
@@ -22,12 +23,16 @@ public final class CowCannon extends JavaPlugin {
 		CowSettings.getInstance().load();
 
 		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
+		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
 	}
 
 	@Override
 	public void onDisable() {
 		if (task != null && !task.isCancelled())
 			task.cancel();
+
+		if (task2 != null && !task2.isCancelled())
+			task2.cancel();
 	}
 
 	public static CowCannon getInstance() {
