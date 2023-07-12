@@ -1,10 +1,9 @@
 package org.mineacademy.cowcannon;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
-import net.kyori.adventure.text.event.HoverEvent;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextDecoration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,10 +12,6 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.persistence.PersistentDataContainer;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class EntityListener implements Listener {
 
@@ -31,7 +26,7 @@ public class EntityListener implements Listener {
 		Player player = event.getPlayer();
 		Entity entity = event.getRightClicked();
 
-		player.sendMessage(Component
+		/*player.sendMessage(Component
 				.text("Hello, click me!")
 				.color(NamedTextColor.RED)
 				.decorate(TextDecoration.BOLD, TextDecoration.UNDERLINED)
@@ -40,31 +35,30 @@ public class EntityListener implements Listener {
 				.append(Component.keybind("key.jump")
 						.color(NamedTextColor.LIGHT_PURPLE)
 						.decoration(TextDecoration.BOLD, true))
-
-		);
+		);*/
 
 		// iterate through player.getEffectivePermissions() as foreach
 		/*for (PermissionAttachmentInfo permission : player.getEffectivePermissions()) {
 			PermissionAttachment attachment = permission.getAttachment();
-
+		
 			System.out.println("Permission: " + permission.getPermission() + " from " + (attachment == null ? "default" : attachment.getPlugin().getName()));
 		}
-
+		
 		System.out.println("Before: " + permissions);
-
+		
 		if (permissions.containsKey(player.getUniqueId())) {
 			PermissionAttachment permission = permissions.remove(player.getUniqueId());
 			player.removeAttachment(permission);
-
+		
 			player.sendMessage("You no longer have the perm!");
-
+		
 		} else {
 			PermissionAttachment permission = player.addAttachment(CowCannon.getInstance(), "funky.demo.test", true);
-
+		
 			permissions.put(player.getUniqueId(), permission);
 			player.sendMessage("You now have the perm!");
 		}
-
+		
 		System.out.println("After: " + permissions);*/
 
 		if (player.getItemInHand().getItemMeta() != null) {
