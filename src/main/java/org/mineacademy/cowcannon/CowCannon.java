@@ -15,6 +15,7 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
 		getServer().getPluginManager().registerEvents(new GuiListener(), this);
 		getServer().getPluginManager().registerEvents(new LaserPointerListener(), this);
+		getServer().getPluginManager().registerEvents(new ChatListener(), this);
 
 		getCommand("cow").setExecutor(new CowCommand());
 		getCommand("butterfly").setExecutor(new ButterflyCommand());

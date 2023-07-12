@@ -1,5 +1,10 @@
 package org.mineacademy.cowcannon;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.event.HoverEvent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,6 +30,18 @@ public class EntityListener implements Listener {
 
 		Player player = event.getPlayer();
 		Entity entity = event.getRightClicked();
+
+		player.sendMessage(Component
+				.text("Hello, click me!")
+				.color(NamedTextColor.RED)
+				.decorate(TextDecoration.BOLD, TextDecoration.UNDERLINED)
+				.clickEvent(ClickEvent.runCommand("/help"))
+				.hoverEvent(HoverEvent.showText(Component.text("Hello, \nI am a cow!")))
+				.append(Component.keybind("key.jump")
+						.color(NamedTextColor.LIGHT_PURPLE)
+						.decoration(TextDecoration.BOLD, true))
+
+		);
 
 		// iterate through player.getEffectivePermissions() as foreach
 		/*for (PermissionAttachmentInfo permission : player.getEffectivePermissions()) {
@@ -57,7 +74,7 @@ public class EntityListener implements Listener {
 			if (entity.getType() == CowSettings.getInstance().getExplodingType()
 					&& entityContainer.has(Keys.CUSTOM_COW)
 					&& handItemContainer.has(Keys.CUSTOM_BUCKET)) {
-				
+
 				if (!player.hasPermission("cowcannon.cow.use")) {
 					player.sendMessage("You don't have permission to milk cows ;)");
 
