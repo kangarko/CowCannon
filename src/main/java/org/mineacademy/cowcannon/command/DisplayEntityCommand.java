@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Transformation;
 import org.jetbrains.annotations.NotNull;
 
-public class DisplayEntityCommand implements CommandExecutor {
+public final class DisplayEntityCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {

@@ -1,11 +1,12 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.setting;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
+import org.mineacademy.cowcannon.CowCannon;
 
 import java.io.File;
 
-public class CowSettings {
+public final class CowSettings {
 
 	private final static CowSettings instance = new CowSettings();
 

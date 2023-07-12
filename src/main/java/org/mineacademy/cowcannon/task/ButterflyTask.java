@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.task;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-public class ButterflyTask implements Runnable {
+public final class ButterflyTask implements Runnable {
 
 	private static final ButterflyTask instance = new ButterflyTask();
 

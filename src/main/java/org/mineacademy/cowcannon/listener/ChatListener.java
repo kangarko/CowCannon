@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.listener;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.audience.Audience;
@@ -8,7 +8,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-public class ChatListener implements Listener {
+public final class ChatListener implements Listener {
 
 	@EventHandler
 	public void onChat(AsyncChatEvent event) {

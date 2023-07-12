@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,8 +12,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.jetbrains.annotations.NotNull;
+import org.mineacademy.cowcannon.CowCannon;
 
-public class GuiCommand implements CommandExecutor {
+public final class GuiCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {

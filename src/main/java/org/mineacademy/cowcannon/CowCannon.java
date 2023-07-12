@@ -2,6 +2,16 @@ package org.mineacademy.cowcannon;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+import org.mineacademy.cowcannon.command.*;
+import org.mineacademy.cowcannon.listener.ChatListener;
+import org.mineacademy.cowcannon.listener.EntityListener;
+import org.mineacademy.cowcannon.listener.GuiListener;
+import org.mineacademy.cowcannon.listener.LaserPointerListener;
+import org.mineacademy.cowcannon.model.Board;
+import org.mineacademy.cowcannon.model.CustomRecipe;
+import org.mineacademy.cowcannon.setting.CowSettings;
+import org.mineacademy.cowcannon.task.ButterflyTask;
+import org.mineacademy.cowcannon.task.LaserPointerTask;
 
 public final class CowCannon extends JavaPlugin {
 
@@ -22,9 +32,12 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("displayentity").setExecutor(new DisplayEntityCommand());
 		getCommand("customitem").setExecutor(new CustomItemCommand());
 		getCommand("gui").setExecutor(new GuiCommand());
+		getCommand("giant").setExecutor(new GiantCommand());
+		getCommand("donate").setExecutor(new DonateCommand());
+		getCommand("read").setExecutor(new ReadCommand());
 
 		CowSettings.getInstance().load();
-		CustomRecipes.register();
+		CustomRecipe.register();
 
 		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
 		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
@@ -41,6 +54,14 @@ public final class CowCannon extends JavaPlugin {
 
 		if (task3 != null && !task3.isCancelled())
 			task3.cancel();
+	}
+
+	public BukkitTask getTask() {
+		return task;
+	}
+
+	public void setTask(BukkitTask task) {
+		this.task = task;
 	}
 
 	public static CowCannon getInstance() {

@@ -39,6 +39,16 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <!--<relocations>
+                                <relocation>
+                                    <pattern>de.slikey</pattern>
+                                    <shadedPattern>${project.groupId}.${project.artifactId}.effectlib</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.apache.commons</pattern>
+                                    <shadedPattern>${project.groupId}.${project.artifactId}.commons</shadedPattern>
+                                </relocation>
+                            </relocations>-->
                         </configuration>
                     </execution>
                 </executions>
@@ -61,6 +71,10 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -70,5 +84,30 @@
             <version>1.20.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <!--<dependency>
+            <groupId>org.mineacademy</groupId>
+            <artifactId>Boss</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>D:\Users\kangarko\Test Servers\YouTube\plugins\Boss-4.8.5.jar</systemPath>
+        </dependency>-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.16.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--<dependency>
+            <groupId>com.github.elBukkit</groupId>
+            <artifactId>EffectLib</artifactId>
+            <version>b00ca0231f</version>
+            <scope>compile</scope>
+        </dependency>-->
     </dependencies>
 </project>

@@ -2,6 +2,9 @@ name: CowCannon
 version: '${project.version}'
 main: org.mineacademy.cowcannon.CowCannon
 api-version: '1.13'
+libraries:
+  - org.jsoup:jsoup:1.16.1
+
 commands:
   cow:
     description: "Spawn an exploding cow"
@@ -26,6 +29,18 @@ commands:
     description: "Opens a GUI"
     usage: "/gui"
     permission: cowcannon.command.gui
+  read:
+    description: "Reads a webpage from the Internet."
+    usage: "/read <url>"
+    permission: cowcannon.command.read
+  donate:
+    description: "Donates a player some muney."
+    usage: "/donate <player> <amount>"
+    permission: cowcannon.command.donate
+  giant:
+    description: "Spawns a Giant Boss."
+    usage: "/giant"
+    permission: cowcannon.command.giant
 permissions:
   cowcannon.command.cow:
     default: op

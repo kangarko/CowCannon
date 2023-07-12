@@ -1,8 +1,4 @@
-package org.mineacademy.cowcannon;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+package org.mineacademy.cowcannon.listener;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -12,8 +8,14 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.mineacademy.cowcannon.setting.CowSettings;
+import org.mineacademy.cowcannon.util.Keys;
 
-public class EntityListener implements Listener {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+public final class EntityListener implements Listener {
 
 	private Map<UUID, PermissionAttachment> permissions = new HashMap<>();
 

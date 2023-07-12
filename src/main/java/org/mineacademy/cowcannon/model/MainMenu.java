@@ -9,7 +9,7 @@ import org.mineacademy.fo.menu.button.StartPosition;
 // import it from https://github.com/kangarko/Foundation
 //
 
-public class MainMenu extends Menu {
+public final class MainMenu extends Menu {
 
 	@Position(start = StartPosition.CENTER, value = -2)
 	private final Button openPreferencesButton;

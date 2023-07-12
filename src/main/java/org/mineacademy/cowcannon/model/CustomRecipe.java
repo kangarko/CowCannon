@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.model;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,10 +7,11 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.mineacademy.cowcannon.CowCannon;
 
 import java.util.Arrays;
 
-public final class CustomRecipes {
+public final class CustomRecipe {
 
 	public static void register() {
 		ItemStack superPaper = new ItemStack(Material.PAPER);

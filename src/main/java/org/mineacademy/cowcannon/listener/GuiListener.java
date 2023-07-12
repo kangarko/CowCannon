@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.listener;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -7,8 +7,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
+import org.mineacademy.cowcannon.CowCannon;
 
-public class GuiListener implements Listener {
+public final class GuiListener implements Listener {
 
 	@EventHandler
 	public void onClick(InventoryClickEvent event) {

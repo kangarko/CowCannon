@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.task;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.model;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -8,8 +8,9 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
+import org.mineacademy.cowcannon.CowCannon;
 
-public class Board implements Runnable {
+public final class Board implements Runnable {
 
 	private final static Board instance = new Board();
 

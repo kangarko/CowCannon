@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.command;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -12,13 +12,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.mineacademy.cowcannon.setting.CowSettings;
+import org.mineacademy.cowcannon.util.Keys;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CowCommand implements CommandExecutor, TabExecutor {
+public final class CowCommand implements CommandExecutor, TabExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -75,7 +77,7 @@ public class CowCommand implements CommandExecutor, TabExecutor {
 				return true;
 			}
 		}
-		
+
 		entity.getPersistentDataContainer().set(Keys.CUSTOM_COW, PersistentDataType.BOOLEAN, true);
 		entity.setCustomName(ChatColor.RED + "Milk Me");
 		entity.setCustomNameVisible(true);

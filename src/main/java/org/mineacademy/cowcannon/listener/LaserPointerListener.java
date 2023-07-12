@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon;
+package org.mineacademy.cowcannon.listener;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -11,6 +11,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.RayTraceResult;
 
 public final class LaserPointerListener implements Listener {
+
+	//private final EffectManager effectManager = new EffectManager(CowCannon.getInstance());
 
 	@EventHandler
 	public void onClick(final PlayerInteractEvent event) {
@@ -29,9 +31,22 @@ public final class LaserPointerListener implements Listener {
 		if (hand.hasItemMeta() && hand.getItemMeta().getDisplayName().equals(ChatColor.WHITE + "Laser Pointer")) {
 			RayTraceResult result = player.rayTraceBlocks(distance);
 
-			if (result != null && result.getHitBlock() != null && result.getHitBlock().isSolid())
+			if (result != null && result.getHitBlock() != null && result.getHitBlock().isSolid()) {
+				/*BigBangEffect effect = new BigBangEffect(effectManager);
+
+				effect.radius = 4;
+				effect.setLocation(result.getHitBlock().getLocation().add(0, 2, 0));
+				effect.start();
+
+				new BukkitRunnable() {
+					@Override
+					public void run() {
+						effect.cancel();
+					}
+				}.runTaskLater(CowCannon.getInstance(), 20 * 2);*/
+
 				player.getWorld().createExplosion(result.getHitBlock().getLocation(), 5F, true);
-			else
+			} else
 				player.sendMessage(ChatColor.LIGHT_PURPLE + "[Laser]" + ChatColor.WHITE + " Target is too far or not a solid block!");
 		}
 	}
