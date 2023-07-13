@@ -3,6 +3,7 @@ package org.mineacademy.cowcannon;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 import org.mineacademy.cowcannon.command.*;
+import org.mineacademy.cowcannon.hook.ProtocolLibHook;
 import org.mineacademy.cowcannon.listener.ChatListener;
 import org.mineacademy.cowcannon.listener.EntityListener;
 import org.mineacademy.cowcannon.listener.GuiListener;
@@ -38,6 +39,9 @@ public final class CowCannon extends JavaPlugin {
 
 		CowSettings.getInstance().load();
 		CustomRecipe.register();
+
+		if (getServer().getPluginManager().getPlugin("ProtocolLib") != null)
+			ProtocolLibHook.register();
 
 		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
 		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
