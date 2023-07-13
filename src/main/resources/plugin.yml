@@ -2,7 +2,7 @@ name: CowCannon
 version: '${project.version}'
 main: org.mineacademy.cowcannon.CowCannon
 api-version: '1.13'
-softdepend: [ ProtocolLib ]
+softdepend: [ Vault, ProtocolLib ]
 libraries:
   - org.jsoup:jsoup:1.16.1
 
@@ -34,10 +34,11 @@ commands:
     description: "Reads a webpage from the Internet."
     usage: "/read <url>"
     permission: cowcannon.command.read
-  donate:
-    description: "Donates a player some muney."
-    usage: "/donate <player> <amount>"
-    permission: cowcannon.command.donate
+  economy:
+    description: "Manages Cow economy."
+    usage: "/economy <view/take/give> <player> [amount]"
+    aliases: [ eco, money, balance, bal ]
+    permission: cowcannon.command.economy
   giant:
     description: "Spawns a Giant Boss."
     usage: "/giant"

@@ -1,13 +1,17 @@
 package org.mineacademy.cowcannon.listener;
 
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Cow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.mineacademy.cowcannon.hook.VaultHook;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.util.Keys;
 
@@ -18,6 +22,17 @@ import java.util.UUID;
 public final class EntityListener implements Listener {
 
 	private Map<UUID, PermissionAttachment> permissions = new HashMap<>();
+	
+	@EventHandler
+	public void onEntityKill(EntityDeathEvent event) {
+		Player killer = event.getEntity().getKiller();
+
+		if (killer != null && event.getEntity() instanceof Cow) {
+			VaultHook.deposit(killer, 1);
+
+			killer.sendMessage(ChatColor.GOLD + "You have earned 1 Cow!");
+		}
+	}
 
 	@EventHandler
 	public void onEntityRightClick(PlayerInteractEntityEvent event) {

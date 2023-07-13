@@ -3,6 +3,7 @@ package org.mineacademy.cowcannon;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 import org.mineacademy.cowcannon.command.*;
+import org.mineacademy.cowcannon.hook.CowEconomy;
 import org.mineacademy.cowcannon.hook.ProtocolLibHook;
 import org.mineacademy.cowcannon.listener.ChatListener;
 import org.mineacademy.cowcannon.listener.EntityListener;
@@ -34,7 +35,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("customitem").setExecutor(new CustomItemCommand());
 		getCommand("gui").setExecutor(new GuiCommand());
 		getCommand("giant").setExecutor(new GiantCommand());
-		getCommand("donate").setExecutor(new DonateCommand());
+		getCommand("economy").setExecutor(new EconomyCommand());
 		getCommand("read").setExecutor(new ReadCommand());
 
 		CowSettings.getInstance().load();
@@ -42,6 +43,9 @@ public final class CowCannon extends JavaPlugin {
 
 		if (getServer().getPluginManager().getPlugin("ProtocolLib") != null)
 			ProtocolLibHook.register();
+
+		if (getServer().getPluginManager().getPlugin("Vault") != null)
+			CowEconomy.register();
 
 		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
 		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
