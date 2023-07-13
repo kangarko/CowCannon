@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 import org.mineacademy.cowcannon.command.*;
 import org.mineacademy.cowcannon.hook.CowEconomy;
+import org.mineacademy.cowcannon.hook.PlaceholderAPIHook;
 import org.mineacademy.cowcannon.hook.ProtocolLibHook;
 import org.mineacademy.cowcannon.listener.ChatListener;
 import org.mineacademy.cowcannon.listener.EntityListener;
@@ -46,6 +47,9 @@ public final class CowCannon extends JavaPlugin {
 
 		if (getServer().getPluginManager().getPlugin("Vault") != null)
 			CowEconomy.register();
+
+		if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null)
+			PlaceholderAPIHook.registerHook();
 
 		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
 		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
