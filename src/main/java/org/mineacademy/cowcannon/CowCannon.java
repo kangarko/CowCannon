@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 import org.mineacademy.cowcannon.command.*;
 import org.mineacademy.cowcannon.hook.CowEconomy;
+import org.mineacademy.cowcannon.hook.DiscordSRVHook;
 import org.mineacademy.cowcannon.hook.PlaceholderAPIHook;
 import org.mineacademy.cowcannon.hook.ProtocolLibHook;
 import org.mineacademy.cowcannon.listener.ChatListener;
@@ -51,6 +52,9 @@ public final class CowCannon extends JavaPlugin {
 		if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null)
 			PlaceholderAPIHook.registerHook();
 
+		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)
+			DiscordSRVHook.register();
+
 		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
 		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
 		task3 = getServer().getScheduler().runTaskTimer(this, LaserPointerTask.getInstance(), 0, 1);
@@ -66,6 +70,9 @@ public final class CowCannon extends JavaPlugin {
 
 		if (task3 != null && !task3.isCancelled())
 			task3.cancel();
+
+		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)
+			DiscordSRVHook.unregister();
 	}
 
 	public BukkitTask getTask() {

@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.mineacademy.cowcannon.CowCannon;
+import org.mineacademy.cowcannon.hook.DiscordSRVHook;
 import org.mineacademy.cowcannon.hook.VaultHook;
 
 import java.util.ArrayList;
@@ -88,8 +89,11 @@ public final class EconomyCommand implements CommandExecutor, TabCompleter {
 
 								if (errorMessage != null && !errorMessage.isEmpty())
 									sender.sendMessage(ChatColor.RED + "Error: " + errorMessage);
-								else
+								else {
 									sender.sendMessage(ChatColor.GREEN + "Gave " + VaultHook.formatCurrencySymbol(amount) + " to " + target.getName() + "' account.");
+
+									DiscordSRVHook.sendMessage("standard", "Gave " + VaultHook.formatCurrencySymbol(amount) + " to " + target.getName() + "' account.");
+								}
 							}
 
 						} else
