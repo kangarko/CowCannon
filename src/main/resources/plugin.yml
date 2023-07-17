@@ -43,6 +43,10 @@ commands:
     description: "Spawns a Giant Boss."
     usage: "/giant"
     permission: cowcannon.command.giant
+  psycho:
+    description: "Spawns a Psycho custom NMS mob."
+    usage: "/psycho"
+    permission: cowcannon.command.psycho
 permissions:
   cowcannon.command.cow:
     default: op

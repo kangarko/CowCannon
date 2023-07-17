@@ -39,6 +39,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("giant").setExecutor(new GiantCommand());
 		getCommand("economy").setExecutor(new EconomyCommand());
 		getCommand("read").setExecutor(new ReadCommand());
+		getCommand("psycho").setExecutor(new PsychoCommand());
 
 		CowSettings.getInstance().load();
 		CustomRecipe.register();

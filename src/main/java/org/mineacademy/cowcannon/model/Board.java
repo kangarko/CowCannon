@@ -45,11 +45,11 @@ public final class Board implements Runnable {
 		//objective.getScore(ChatColor.WHITE + "Walked: 0cm").setScore(0);
 
 		Team team1 = scoreboard.registerNewTeam("team1");
-		String teamKey = ChatColor.GOLD.toString();
+		String teamKey = ChatColor.WHITE.toString();
 
 		team1.addEntry(teamKey);
-		team1.setPrefix("Walked: ");
-		team1.setSuffix("0cm");
+		team1.setPrefix("Hype: ");
+		team1.setSuffix("0");
 
 		objective.getScore(teamKey).setScore(0);
 		player.setScoreboard(scoreboard);
@@ -59,7 +59,7 @@ public final class Board implements Runnable {
 		Scoreboard scoreboard = player.getScoreboard();
 		Team team1 = scoreboard.getTeam("team1");
 
-		team1.setSuffix(ChatColor.GRAY + "" + (player.getStatistic(Statistic.WALK_ONE_CM) + player.getStatistic(Statistic.SPRINT_ONE_CM)) + "cm");
+		team1.setSuffix(ChatColor.AQUA + "" + (player.getStatistic(Statistic.WALK_ONE_CM) + player.getStatistic(Statistic.SPRINT_ONE_CM)));
 	}
 
 	public static Board getInstance() {
