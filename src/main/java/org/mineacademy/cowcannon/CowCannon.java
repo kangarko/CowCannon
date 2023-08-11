@@ -7,10 +7,7 @@ import org.mineacademy.cowcannon.hook.CowEconomy;
 import org.mineacademy.cowcannon.hook.DiscordSRVHook;
 import org.mineacademy.cowcannon.hook.PlaceholderAPIHook;
 import org.mineacademy.cowcannon.hook.ProtocolLibHook;
-import org.mineacademy.cowcannon.listener.ChatListener;
-import org.mineacademy.cowcannon.listener.EntityListener;
-import org.mineacademy.cowcannon.listener.GuiListener;
-import org.mineacademy.cowcannon.listener.LaserPointerListener;
+import org.mineacademy.cowcannon.listener.*;
 import org.mineacademy.cowcannon.model.Board;
 import org.mineacademy.cowcannon.model.CustomRecipe;
 import org.mineacademy.cowcannon.setting.CowSettings;
@@ -30,6 +27,7 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new GuiListener(), this);
 		getServer().getPluginManager().registerEvents(new LaserPointerListener(), this);
 		getServer().getPluginManager().registerEvents(new ChatListener(), this);
+		getServer().getPluginManager().registerEvents(new HealthTagListener(), this);
 
 		getCommand("cow").setExecutor(new CowCommand());
 		getCommand("butterfly").setExecutor(new ButterflyCommand());
@@ -74,14 +72,6 @@ public final class CowCannon extends JavaPlugin {
 
 		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)
 			DiscordSRVHook.unregister();
-	}
-
-	public BukkitTask getTask() {
-		return task;
-	}
-
-	public void setTask(BukkitTask task) {
-		this.task = task;
 	}
 
 	public static CowCannon getInstance() {

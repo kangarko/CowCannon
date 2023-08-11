@@ -4,10 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.Team;
+import org.bukkit.scoreboard.*;
 import org.mineacademy.cowcannon.CowCannon;
 
 public final class Board implements Runnable {
@@ -52,6 +49,12 @@ public final class Board implements Runnable {
 		team1.setSuffix("0");
 
 		objective.getScore(teamKey).setScore(0);
+
+		Objective objectiveHealth = scoreboard.registerNewObjective(
+				CowCannon.getInstance().getName() + "_health", Criteria.HEALTH, net.md_5.bungee.api.ChatColor.of("#b1904c") + "❤");
+
+		objectiveHealth.setDisplaySlot(DisplaySlot.BELOW_NAME);
+
 		player.setScoreboard(scoreboard);
 	}
 
