@@ -47,6 +47,10 @@ commands:
     description: "Spawns a Psycho custom NMS mob."
     usage: "/psycho"
     permission: cowcannon.command.psycho
+  crawl:
+    description: "Toggles crawling."
+    usage: "/crawl"
+    permission: cowcannon.command.crawl
 permissions:
   cowcannon.command.cow:
     default: op
