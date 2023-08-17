@@ -41,6 +41,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("psycho").setExecutor(new PsychoCommand());
 		getCommand("crawl").setExecutor(new CrawlCommand());
 		getCommand("toast").setExecutor(new ToastCommand());
+		getCommand("locale").setExecutor(new LocaleCommand());
 
 		CowSettings.getInstance().load();
 		CustomRecipe.register();

@@ -55,6 +55,10 @@ commands:
     description: "Sends a toast notification."
     usage: "/toast <style> <material> Hello World"
     permission: cowcannon.command.toast
+  locale:
+    description: "Test player's localization."
+    usage: "/locale <get/translate/key>"
+    permission: cowcannon.command.locale
 permissions:
   cowcannon.command.cow:
     default: op
