@@ -51,6 +51,10 @@ commands:
     description: "Toggles crawling."
     usage: "/crawl"
     permission: cowcannon.command.crawl
+  toast:
+    description: "Sends a toast notification."
+    usage: "/toast <style> <material> Hello World"
+    permission: cowcannon.command.toast
 permissions:
   cowcannon.command.cow:
     default: op
