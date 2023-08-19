@@ -1,12 +1,9 @@
 package org.mineacademy.cowcannon.command;
 
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.mineacademy.cowcannon.CowCannon;
@@ -46,7 +43,8 @@ public final class TagCommand implements CommandExecutor {
 			player.sendMessage(ChatColor.GREEN + "Your tag has been set to " + tag + ChatColor.GREEN + ".");
 		}
 
-		EntityPlayer handle = ((CraftPlayer) player).getHandle();
+		sender.sendMessage("Please uncomment TagCommand, code in ProtocolLib hook and pom.xml imports to make this command work.");
+		/*EntityPlayer handle = ((CraftPlayer) player).getHandle();
 
 		for (Player online : Bukkit.getOnlinePlayers()) {
 			PlayerConnection connection = ((CraftPlayer) online).getHandle().playerConnection;
@@ -61,7 +59,7 @@ public final class TagCommand implements CommandExecutor {
 				connection.sendPacket(new PacketPlayOutEntityDestroy(handle.getId()));
 				connection.sendPacket(new PacketPlayOutNamedEntitySpawn(handle));
 			}
-		}
+		}*/
 
 		return true;
 	}
