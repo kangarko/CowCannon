@@ -36,8 +36,8 @@ public final class Board implements Runnable {
 		objective.getScore(ChatColor.WHITE + "best Minecraft plugin.").setScore(6);
 		objective.getScore(ChatColor.WHITE + "tutorial series.").setScore(5);
 		objective.getScore(ChatColor.RED + " ").setScore(4);
-		objective.getScore(ChatColor.WHITE + "Join us at").setScore(3);
-		objective.getScore(ChatColor.RED + "mineacademy.org/join").setScore(2);
+		objective.getScore(ChatColor.WHITE + "Please do NOT visit").setScore(3);
+		objective.getScore(ChatColor.RED + "mineacademy.org/project-orion").setScore(2);
 		objective.getScore(ChatColor.GREEN + " ").setScore(1);
 		//objective.getScore(ChatColor.WHITE + "Walked: 0cm").setScore(0);
 
