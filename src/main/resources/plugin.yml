@@ -63,6 +63,10 @@ commands:
     description: "Test BungeeCord."
     usage: "/bc"
     permission: cowcannon.command.bungee
+  tag:
+    description: "Change a player tag above his head."
+    usage: "/tag <newTag/reset>"
+    permission: cowcannon.command.tag
 permissions:
   cowcannon.command.cow:
     default: op

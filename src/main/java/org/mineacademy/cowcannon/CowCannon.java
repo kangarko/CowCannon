@@ -16,7 +16,13 @@ import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.task.ButterflyTask;
 import org.mineacademy.cowcannon.task.LaserPointerTask;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public final class CowCannon extends JavaPlugin {
+
+	private static Map<UUID, String> playerTags = new HashMap<>();
 
 	private BukkitTask task;
 	private BukkitTask task2;
@@ -51,6 +57,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("giant").setExecutor(new GiantCommand());
 		getCommand("economy").setExecutor(new EconomyCommand());
 		getCommand("read").setExecutor(new ReadCommand());
+		getCommand("tag").setExecutor(new TagCommand());
 
 		if (minorVersion == 8/* || minorVersion == 20*/) {
 			//EntityRegister_1_8_8.registerEntity("DeadlyChicken", 93, EntityChicken.class, AggressiveChicken1_8_8.class);
@@ -109,6 +116,10 @@ public final class CowCannon extends JavaPlugin {
 
 		this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
 		this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
+	}
+
+	public static Map<UUID, String> getPlayerTags() {
+		return playerTags;
 	}
 
 	public static CowCannon getInstance() {
