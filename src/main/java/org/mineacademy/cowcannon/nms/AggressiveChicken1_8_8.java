@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon.nms;
+/*package org.mineacademy.cowcannon.nms;
 
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Location;
@@ -54,4 +54,4 @@ public class AggressiveChicken1_8_8 extends EntityChicken {
 	protected String bp() {
 		return "mob.zombie.death";
 	}
-}
+}*/

@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon.nms;
+/*package org.mineacademy.cowcannon.nms;
 
 import net.minecraft.server.v1_8_R3.BiomeBase;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -12,13 +12,7 @@ import java.util.Map;
 
 public class EntityRegister_1_8_8 {
 
-	/**
-	 * @param name
-	 * @param id
-	 * @param nmsClass
-	 * @param customClass
-	 */
-	public static void registerEntity(String name, int id, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass) {
+	/*public static void registerEntity(String name, int id, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass) {
 		try {
 			/*
 			 * First, we make a list of all HashMap's in the EntityTypes class
@@ -27,7 +21,7 @@ public class EntityRegister_1_8_8 {
 			 * By creating a list of these maps we can easily modify them later
 			 * on.
 			 */
-			final List<Map<?, ?>> dataMaps = new ArrayList<>();
+			/*final List<Map<?, ?>> dataMaps = new ArrayList<>();
 			for (final Field f : EntityTypes.class.getDeclaredFields())
 				if (f.getType().getSimpleName().equals(Map.class.getSimpleName())) {
 					f.setAccessible(true);
@@ -40,7 +34,7 @@ public class EntityRegister_1_8_8 {
 			 *
 			 * map 0 is the map with names and map 2 is the map with ids
 			 */
-			if (dataMaps.get(2).containsKey(id)) {
+			/*if (dataMaps.get(2).containsKey(id)) {
 				dataMaps.get(0).remove(name);
 				dataMaps.get(2).remove(id);
 			}
@@ -48,7 +42,7 @@ public class EntityRegister_1_8_8 {
 			 * now we call the method which adds the entity to the lists in the
 			 * EntityTypes class, now we are actually 'registering' our entity
 			 */
-			final Method method = EntityTypes.class.getDeclaredMethod("a", Class.class, String.class, int.class);
+			/*final Method method = EntityTypes.class.getDeclaredMethod("a", Class.class, String.class, int.class);
 			method.setAccessible(true);
 			method.invoke(null, customClass, name, id);
 			/*
@@ -59,7 +53,7 @@ public class EntityRegister_1_8_8 {
 			 * I am using reflection so we have no problems later when minecraft
 			 * changes the fields name
 			 */
-			for (final Field f : BiomeBase.class.getDeclaredFields())
+			/*for (final Field f : BiomeBase.class.getDeclaredFields())
 				if (f.getType().getSimpleName().equals(BiomeBase.class.getSimpleName()))
 					if (f.get(null) != null)
 						/*
@@ -71,7 +65,7 @@ public class EntityRegister_1_8_8 {
 						 * required lists without using the name (which probably
 						 * changes every version)
 						 */
-						for (final Field list : BiomeBase.class.getDeclaredFields())
+						/*for (final Field list : BiomeBase.class.getDeclaredFields())
 							if (list.getType().getSimpleName().equals(List.class.getSimpleName())) {
 								list.setAccessible(true);
 
@@ -85,7 +79,7 @@ public class EntityRegister_1_8_8 {
 								 * EntitySkeleton) we will change it to our
 								 * custom entity class
 								 */
-								for (final BiomeBase.BiomeMeta meta : metaList) {
+								/*for (final BiomeBase.BiomeMeta meta : metaList) {
 									final Field clazz = BiomeBase.BiomeMeta.class.getDeclaredFields()[0];
 									if (clazz.get(meta).equals(nmsClass))
 										clazz.set(meta, customClass);
@@ -95,4 +89,4 @@ public class EntityRegister_1_8_8 {
 			e.printStackTrace();
 		}
 	}
-}
+}*/

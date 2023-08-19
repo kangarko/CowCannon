@@ -1,6 +1,5 @@
 package org.mineacademy.cowcannon;
 
-import net.minecraft.server.v1_8_R3.EntityChicken;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
@@ -13,8 +12,6 @@ import org.mineacademy.cowcannon.listener.*;
 import org.mineacademy.cowcannon.model.Board;
 import org.mineacademy.cowcannon.model.Bungee;
 import org.mineacademy.cowcannon.model.CustomRecipe;
-import org.mineacademy.cowcannon.nms.AggressiveChicken1_8_8;
-import org.mineacademy.cowcannon.nms.EntityRegister_1_8_8;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.task.ButterflyTask;
 import org.mineacademy.cowcannon.task.LaserPointerTask;
@@ -56,7 +53,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("read").setExecutor(new ReadCommand());
 
 		if (minorVersion == 8/* || minorVersion == 20*/) {
-			EntityRegister_1_8_8.registerEntity("DeadlyChicken", 93, EntityChicken.class, AggressiveChicken1_8_8.class);
+			//EntityRegister_1_8_8.registerEntity("DeadlyChicken", 93, EntityChicken.class, AggressiveChicken1_8_8.class);
 
 			getCommand("psycho").setExecutor(new PsychoCommand());
 		}
