@@ -54,7 +54,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>net.md-5</groupId>
                 <artifactId>specialsource-maven-plugin</artifactId>
                 <version>1.2.5</version>
@@ -90,8 +90,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
+            </plugin>-->
         </plugins>
         <resources>
             <resource>
@@ -178,12 +177,12 @@
             <version>1.27.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>${remapped.version}</version>
             <scope>provided</scope>
             <classifier>remapped-mojang</classifier>
-        </dependency>
+        </dependency>-->
     </dependencies>
 </project>

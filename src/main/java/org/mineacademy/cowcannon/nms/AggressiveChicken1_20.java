@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon.nms;
+/*package org.mineacademy.cowcannon.nms;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -61,4 +61,4 @@ public class AggressiveChicken1_20 extends Chicken {
 	protected @Nullable SoundEvent getDeathSound() {
 		return SoundEvents.WITHER_SKELETON_DEATH;
 	}
-}
+}*/
