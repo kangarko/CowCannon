@@ -59,6 +59,10 @@ commands:
     description: "Test player's localization."
     usage: "/locale <get/translate/key>"
     permission: cowcannon.command.locale
+  bc:
+    description: "Test BungeeCord."
+    usage: "/bc"
+    permission: cowcannon.command.bungee
 permissions:
   cowcannon.command.cow:
     default: op

@@ -9,6 +9,7 @@ import org.mineacademy.cowcannon.hook.PlaceholderAPIHook;
 import org.mineacademy.cowcannon.hook.ProtocolLibHook;
 import org.mineacademy.cowcannon.listener.*;
 import org.mineacademy.cowcannon.model.Board;
+import org.mineacademy.cowcannon.model.Bungee;
 import org.mineacademy.cowcannon.model.CustomRecipe;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.task.ButterflyTask;
@@ -42,6 +43,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("crawl").setExecutor(new CrawlCommand());
 		getCommand("toast").setExecutor(new ToastCommand());
 		getCommand("locale").setExecutor(new LocaleCommand());
+		getCommand("bc").setExecutor(new BungeeCommand());
 
 		CowSettings.getInstance().load();
 		CustomRecipe.register();
@@ -61,6 +63,9 @@ public final class CowCannon extends JavaPlugin {
 		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
 		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
 		task3 = getServer().getScheduler().runTaskTimer(this, LaserPointerTask.getInstance(), 0, 1);
+
+		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+		this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new Bungee());
 	}
 
 	@Override
@@ -76,6 +81,9 @@ public final class CowCannon extends JavaPlugin {
 
 		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)
 			DiscordSRVHook.unregister();
+
+		this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
+		this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
 	}
 
 	public static CowCannon getInstance() {
