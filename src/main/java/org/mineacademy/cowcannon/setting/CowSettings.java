@@ -26,7 +26,11 @@ public final class CowSettings {
 
 		config = new YamlConfiguration();
 
-		//config.options().parseComments(true);
+		try {
+			config.options().parseComments(true);
+		} catch (Exception ex) {
+			// Unsupported
+		}
 
 		try {
 			config.load(file);

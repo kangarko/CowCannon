@@ -1,7 +1,9 @@
 package org.mineacademy.cowcannon.task;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -49,8 +51,8 @@ public final class ButterflyTask implements Runnable {
 			rotateAroundAxisX(particleLocation, -90);
 			rotateAroundAxisY(particleLocation, location.getYaw());
 
-			//DustOptions dust = new DustOptions(Color.fromRGB(212, 146, 53), 0.6F);
-			//player.getWorld().spawnParticle(Particle.REDSTONE, location.clone().add(particleLocation), 0, dust);
+			Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(212, 146, 53), 0.6F);
+			player.getWorld().spawnParticle(Particle.REDSTONE, location.clone().add(particleLocation), 0, dust);
 		}
 	}
 
