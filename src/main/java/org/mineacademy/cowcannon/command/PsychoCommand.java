@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.mineacademy.cowcannon.nms.AggressiveChicken1_8_8;
 
 public final class PsychoCommand implements CommandExecutor {
 
@@ -23,8 +24,8 @@ public final class PsychoCommand implements CommandExecutor {
 		//new PsychoMob1_20(player.getLocation());
 
 		// /psycho goto <player>
-		/*if (args.length == 2 && "goto".equals(args[0])) {
-			Player targetPlayer = player.getServer().getPlayer(args[1]);
+		if (args.length == 2 && "goto".equals(args[0])) {
+			/*Player targetPlayer = player.getServer().getPlayer(args[1]);
 
 			for (Entity nearby : player.getNearbyEntities(20, 20, 20)) {
 				if (nearby.getPersistentDataContainer().has(AggressiveChicken1_20.KEY)) {
@@ -36,9 +37,9 @@ public final class PsychoCommand implements CommandExecutor {
 					player.sendMessage(ChatColor.GOLD + "Chicken is now following " + targetPlayer.getName());
 					break;
 				}
-			}
+			}*/
 		} else
-			new AggressiveChicken1_20(player.getLocation()); // /psycho*/
+			new AggressiveChicken1_8_8(player.getLocation()); // /psycho
 
 		return true;
 	}

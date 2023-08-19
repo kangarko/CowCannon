@@ -28,7 +28,7 @@ public final class CowSettings {
 
 		try {
 			config.options().parseComments(true);
-		} catch (Exception ex) {
+		} catch (Throwable t) {
 			// Unsupported
 		}
 

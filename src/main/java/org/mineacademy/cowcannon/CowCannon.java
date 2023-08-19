@@ -1,5 +1,6 @@
 package org.mineacademy.cowcannon;
 
+import net.minecraft.server.v1_8_R3.EntityChicken;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
@@ -11,6 +12,9 @@ import org.mineacademy.cowcannon.hook.ProtocolLibHook;
 import org.mineacademy.cowcannon.listener.*;
 import org.mineacademy.cowcannon.model.Board;
 import org.mineacademy.cowcannon.model.Bungee;
+import org.mineacademy.cowcannon.model.CustomRecipe;
+import org.mineacademy.cowcannon.nms.AggressiveChicken1_8_8;
+import org.mineacademy.cowcannon.nms.EntityRegister_1_8_8;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.task.ButterflyTask;
 import org.mineacademy.cowcannon.task.LaserPointerTask;
@@ -24,46 +28,52 @@ public final class CowCannon extends JavaPlugin {
 	@Override
 	public void onEnable() {
 
+		// This gives a string like 1_16_R3
+		String minecraftVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+
+		// We want to extract the 16, which equals the MC version, such as Minecraft 1.16
+		int minorVersion = Integer.parseInt(minecraftVersion.split("_")[1]);
+
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
 		getServer().getPluginManager().registerEvents(new GuiListener(), this);
 		getServer().getPluginManager().registerEvents(new LaserPointerListener(), this);
 		getServer().getPluginManager().registerEvents(new ChatListener(), this);
 		getServer().getPluginManager().registerEvents(new HealthTagListener(), this);
 
-		String minecraftVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-
-		if (minecraftVersion.contains("1_8_R3")) {
-			//
-		} else
+		if (minorVersion >= 14)
 			getServer().getPluginManager().registerEvents(new CrawlListener(), this);
 
 		getCommand("cow").setExecutor(new CowCommand());
 		getCommand("butterfly").setExecutor(new ButterflyCommand());
-		getCommand("displayentity").setExecutor(new DisplayEntityCommand());
+
+		if (minorVersion >= 19)
+			getCommand("displayentity").setExecutor(new DisplayEntityCommand());
+
 		getCommand("customitem").setExecutor(new CustomItemCommand());
 		getCommand("gui").setExecutor(new GuiCommand());
 		getCommand("giant").setExecutor(new GiantCommand());
 		getCommand("economy").setExecutor(new EconomyCommand());
 		getCommand("read").setExecutor(new ReadCommand());
-		getCommand("psycho").setExecutor(new PsychoCommand());
 
-		try {
+		if (minorVersion == 8/* || minorVersion == 20*/) {
+			EntityRegister_1_8_8.registerEntity("DeadlyChicken", 93, EntityChicken.class, AggressiveChicken1_8_8.class);
+
+			getCommand("psycho").setExecutor(new PsychoCommand());
+		}
+
+		if (minorVersion >= 14)
 			getCommand("crawl").setExecutor(new CrawlCommand());
-		} catch (LinkageError t) {
-			// have an alternative code for old MC version
-		}
 
-		try {
+		if (minorVersion >= 12)
 			getCommand("toast").setExecutor(new ToastCommand());
-		} catch (LinkageError t) {
-			// have an alternative code for old MC version
-		}
 
 		getCommand("locale").setExecutor(new LocaleCommand());
 		getCommand("bc").setExecutor(new BungeeCommand());
 
 		CowSettings.getInstance().load();
-		//CustomRecipe.register();
+
+		if (minorVersion >= 13)
+			CustomRecipe.register();
 
 		if (getServer().getPluginManager().getPlugin("ProtocolLib") != null)
 			ProtocolLibHook.register();

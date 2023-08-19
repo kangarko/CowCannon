@@ -30,7 +30,12 @@ public final class LaserPointerTask implements Runnable {
 					if (location.getBlock().getType() != Material.AIR)
 						break;
 
-					location.getWorld().spawnParticle(Particle.REDSTONE, location, 1, new Particle.DustOptions(Color.YELLOW, 0.75F));
+					try {
+						location.getWorld().spawnParticle(Particle.REDSTONE, location, 1, new Particle.DustOptions(Color.YELLOW, 0.75F));
+
+					} catch (Throwable t) {
+						// Unsupported
+					}
 				}
 			}
 		}

@@ -51,8 +51,13 @@ public final class ButterflyTask implements Runnable {
 			rotateAroundAxisX(particleLocation, -90);
 			rotateAroundAxisY(particleLocation, location.getYaw());
 
-			Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(212, 146, 53), 0.6F);
-			player.getWorld().spawnParticle(Particle.REDSTONE, location.clone().add(particleLocation), 0, dust);
+			try {
+				Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(212, 146, 53), 0.6F);
+				player.getWorld().spawnParticle(Particle.REDSTONE, location.clone().add(particleLocation), 0, dust);
+
+			} catch (Throwable t) {
+				// Unsupported
+			}
 		}
 	}
 
