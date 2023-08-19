@@ -22,7 +22,7 @@ import java.util.UUID;
 public final class EntityListener implements Listener {
 
 	private Map<UUID, PermissionAttachment> permissions = new HashMap<>();
-	
+
 	@EventHandler
 	public void onEntityKill(EntityDeathEvent event) {
 		Player killer = event.getEntity().getKiller();
@@ -37,8 +37,12 @@ public final class EntityListener implements Listener {
 	@EventHandler
 	public void onEntityRightClick(PlayerInteractEntityEvent event) {
 
-		if (event.getHand() != EquipmentSlot.HAND)
-			return;
+		try {
+			if (event.getHand() != EquipmentSlot.HAND)
+				return;
+		} catch (Throwable t) {
+			// Ignore
+		}
 
 		Player player = event.getPlayer();
 		Entity entity = event.getRightClicked();
@@ -79,20 +83,24 @@ public final class EntityListener implements Listener {
 		System.out.println("After: " + permissions);*/
 
 		if (player.getItemInHand().getItemMeta() != null) {
-			PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
-			PersistentDataContainer handItemContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
+			try {
+				PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
+				PersistentDataContainer handItemContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
 
-			if (entity.getType() == CowSettings.getInstance().getExplodingType()
-					&& entityContainer.has(Keys.CUSTOM_COW)
-					&& handItemContainer.has(Keys.CUSTOM_BUCKET)) {
+				if (entity.getType() == CowSettings.getInstance().getExplodingType()
+						&& entityContainer.has(Keys.CUSTOM_COW)
+						&& handItemContainer.has(Keys.CUSTOM_BUCKET)) {
 
-				if (!player.hasPermission("cowcannon.cow.use")) {
-					player.sendMessage("You don't have permission to milk cows ;)");
+					if (!player.hasPermission("cowcannon.cow.use")) {
+						player.sendMessage("You don't have permission to milk cows ;)");
 
-					return;
+						return;
+					}
+
+					entity.getWorld().createExplosion(entity.getLocation(), 2.5F);
 				}
-
-				entity.getWorld().createExplosion(entity.getLocation(), 2.5F);
+			} catch (LinkageError err) {
+				// Ignore
 			}
 		}
 	}

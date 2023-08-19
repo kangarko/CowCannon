@@ -1,6 +1,9 @@
 package org.mineacademy.cowcannon.task;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
@@ -30,7 +33,7 @@ public final class LaserPointerTask implements Runnable {
 					if (location.getBlock().getType() != Material.AIR)
 						break;
 
-					location.getWorld().spawnParticle(Particle.REDSTONE, location, 1, new Particle.DustOptions(Color.YELLOW, 0.75F));
+					//location.getWorld().spawnParticle(Particle.REDSTONE, location, 1, new Particle.DustOptions(Color.YELLOW, 0.75F));
 				}
 			}
 		}

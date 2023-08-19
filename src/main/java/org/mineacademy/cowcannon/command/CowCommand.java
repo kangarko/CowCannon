@@ -78,7 +78,12 @@ public final class CowCommand implements CommandExecutor, TabExecutor {
 			}
 		}
 
-		entity.getPersistentDataContainer().set(Keys.CUSTOM_COW, PersistentDataType.BOOLEAN, true);
+		try {
+			entity.getPersistentDataContainer().set(Keys.CUSTOM_COW, PersistentDataType.BOOLEAN, true);
+		} catch (LinkageError t) {
+			// have an alternative code for old MC version
+		}
+
 		entity.setCustomName(ChatColor.RED + "Milk Me");
 		entity.setCustomNameVisible(true);
 

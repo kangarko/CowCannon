@@ -1,5 +1,6 @@
 package org.mineacademy.cowcannon.listener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -9,14 +10,13 @@ import org.bukkit.event.entity.EntityToggleSwimEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.mineacademy.cowcannon.CowCannon;
 import org.mineacademy.cowcannon.model.Crawl;
 
 public final class CrawlListener implements Listener {
 
-	@EventHandler(ignoreCancelled = true)
-	public void onToggleSwim(EntityToggleSwimEvent event) {
-		if (Crawl.findPlayer(event.getEntity().getUniqueId()) != null)
-			event.setCancelled(true);
+	public CrawlListener() {
+		Bukkit.getPluginManager().registerEvents(new ModernListener(), CowCannon.getInstance());
 	}
 
 	@EventHandler(ignoreCancelled = true)
@@ -53,5 +53,13 @@ public final class CrawlListener implements Listener {
 
 		if (crawl != null && event.isSneaking())
 			crawl.stop();
+	}
+}
+
+class ModernListener implements Listener {
+	@EventHandler(ignoreCancelled = true)
+	public void onToggleSwim(EntityToggleSwimEvent event) {
+		if (Crawl.findPlayer(event.getEntity().getUniqueId()) != null)
+			event.setCancelled(true);
 	}
 }

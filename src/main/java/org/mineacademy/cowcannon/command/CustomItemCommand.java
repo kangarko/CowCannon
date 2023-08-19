@@ -37,8 +37,13 @@ public final class CustomItemCommand implements CommandExecutor {
 
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		meta.addEnchant(Enchantment.ARROW_DAMAGE, 1, true);
-		meta.getPersistentDataContainer().set(Keys.CUSTOM_BUCKET, PersistentDataType.BOOLEAN, true);
 
+		try {
+			meta.getPersistentDataContainer().set(Keys.CUSTOM_BUCKET, PersistentDataType.BOOLEAN, true);
+		} catch (LinkageError t) {
+			// have an alternative code for old MC version
+		}
+		
 		customBucket.setItemMeta(meta);
 
 		player.getInventory().addItem(customBucket);

@@ -29,22 +29,38 @@ public final class LocaleCommand implements CommandExecutor {
 		if ("get".equals(param)) {
 			player.sendMessage("Your localization is: " + player.getLocale());
 
-			if (player.getLocale() == "en_us") {
-				
-			}
-
 		} else if ("translate".equals(param)) {
-			player.sendMessage(Component.translatable("lanServer.port.invalid.new")
-					.args(Component.text("Banana"), Component.text("Cherry"))
-					.color(TextColor.fromCSSHexString("#cc11ff")));
+			LocaleExecutor.executeLocale(player);
 
 		} else if ("key".equals(param)) {
-			player.sendMessage(Component.translatable("key.back"));
-			player.sendMessage(Component.keybind("key.back"));
+			LocaleExecutor.executeKey(player);
 
 		} else
 			return false;
 
 		return true;
+	}
+}
+
+class LocaleExecutor {
+
+	static void executeLocale(Player player) {
+		try {
+			player.sendMessage(Component.translatable("lanServer.port.invalid.new")
+					.args(Component.text("Banana"), Component.text("Cherry"))
+					.color(TextColor.fromCSSHexString("#cc11ff")));
+
+		} catch (LinkageError err) {
+			player.sendMessage("You need to be on 1.16+ to use this command!");
+		}
+	}
+
+	static void executeKey(Player player) {
+		try {
+			player.sendMessage(Component.translatable("key.back"));
+			player.sendMessage(Component.keybind("key.back"));
+		} catch (LinkageError err) {
+			player.sendMessage("You need to be on 1.16+ to use this command!");
+		}
 	}
 }

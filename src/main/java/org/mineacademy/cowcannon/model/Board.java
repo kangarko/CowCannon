@@ -51,8 +51,9 @@ public final class Board implements Runnable {
 		objective.getScore(teamKey).setScore(0);
 
 		Objective objectiveHealth = scoreboard.registerNewObjective(
-				CowCannon.getInstance().getName() + "_health", Criteria.HEALTH, net.md_5.bungee.api.ChatColor.of("#b1904c") + "❤");
+				CowCannon.getInstance().getName() + "_health", Criterias.HEALTH);
 
+		objectiveHealth.setDisplayName(ChatColor.RED + "❤");
 		objectiveHealth.setDisplaySlot(DisplaySlot.BELOW_NAME);
 
 		player.setScoreboard(scoreboard);

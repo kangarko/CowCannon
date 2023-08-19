@@ -38,7 +38,16 @@ public final class GuiCommand implements CommandExecutor {
 		clearInventoryMeta.setDisplayName(ChatColor.RED + "Clear Inventory");
 		clearInventoryButton.setItemMeta(clearInventoryMeta);
 
-		ItemStack clearWeatherButton = new ItemStack(Material.SUNFLOWER);
+		Material sunflower;
+
+		try {
+			sunflower = Material.valueOf("SUNFLOWER");
+
+		} catch (IllegalArgumentException e) {
+			sunflower = Material.valueOf("DOUBLE_PLANT");
+		}
+
+		ItemStack clearWeatherButton = new ItemStack(sunflower);
 		ItemMeta clearWeatherMeta = clearWeatherButton.getItemMeta();
 		clearWeatherMeta.setDisplayName(ChatColor.YELLOW + "Clear Weather");
 		clearWeatherButton.setItemMeta(clearWeatherMeta);

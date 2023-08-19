@@ -25,7 +25,8 @@ public final class CowSettings {
 			CowCannon.getInstance().saveResource("settings.yml", false);
 
 		config = new YamlConfiguration();
-		config.options().parseComments(true);
+
+		//config.options().parseComments(true);
 
 		try {
 			config.load(file);
