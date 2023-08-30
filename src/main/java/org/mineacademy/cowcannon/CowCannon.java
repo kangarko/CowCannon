@@ -2,7 +2,6 @@ package org.mineacademy.cowcannon;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
 import org.mineacademy.cowcannon.command.*;
 import org.mineacademy.cowcannon.hook.CowEconomy;
 import org.mineacademy.cowcannon.hook.DiscordSRVHook;
@@ -12,6 +11,7 @@ import org.mineacademy.cowcannon.listener.*;
 import org.mineacademy.cowcannon.model.Board;
 import org.mineacademy.cowcannon.model.Bungee;
 import org.mineacademy.cowcannon.model.CustomRecipe;
+import org.mineacademy.cowcannon.model.Scheduler;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.task.ButterflyTask;
 import org.mineacademy.cowcannon.task.LaserPointerTask;
@@ -22,20 +22,20 @@ import java.util.UUID;
 
 public final class CowCannon extends JavaPlugin {
 
-	private static Map<UUID, String> playerTags = new HashMap<>();
+	private static final Map<UUID, String> playerTags = new HashMap<>();
 
-	private BukkitTask task;
-	private BukkitTask task2;
-	private BukkitTask task3;
+	private Scheduler.Task task;
+	private Scheduler.Task task2;
+	private Scheduler.Task task3;
 
 	@Override
 	public void onEnable() {
 
 		// This gives a string like 1_16_R3
-		String minecraftVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+		final String minecraftVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
 
 		// We want to extract the 16, which equals the MC version, such as Minecraft 1.16
-		int minorVersion = Integer.parseInt(minecraftVersion.split("_")[1]);
+		final int minorVersion = Integer.parseInt(minecraftVersion.split("_")[1]);
 
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
 		getServer().getPluginManager().registerEvents(new GuiListener(), this);
@@ -91,9 +91,10 @@ public final class CowCannon extends JavaPlugin {
 		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)
 			DiscordSRVHook.register();
 
-		task = getServer().getScheduler().runTaskTimer(this, ButterflyTask.getInstance(), 0, 1);
-		task2 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 0, 20 /* updates 1 per second */);
-		task3 = getServer().getScheduler().runTaskTimer(this, LaserPointerTask.getInstance(), 0, 1);
+		task = Scheduler.runTimer(ButterflyTask.getInstance(), 0, 1);
+		if (!Scheduler.isFolia())
+			task2 = Scheduler.runTimer(Board.getInstance(), 0, 20 /* updates 1 per second */);
+		task3 = Scheduler.runTimer(LaserPointerTask.getInstance(), 0, 1);
 
 		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new Bungee());
@@ -102,13 +103,13 @@ public final class CowCannon extends JavaPlugin {
 	@Override
 	public void onDisable() {
 
-		if (task != null && Bukkit.getScheduler().isCurrentlyRunning(task.getTaskId()))
+		if (task != null)
 			task.cancel();
 
-		if (task2 != null && Bukkit.getScheduler().isCurrentlyRunning(task2.getTaskId()))
+		if (task2 != null)
 			task2.cancel();
 
-		if (task3 != null && Bukkit.getScheduler().isCurrentlyRunning(task3.getTaskId()))
+		if (task3 != null)
 			task3.cancel();
 
 		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)

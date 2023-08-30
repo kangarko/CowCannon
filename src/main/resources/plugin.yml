@@ -3,6 +3,7 @@ version: '${project.version}'
 main: org.mineacademy.cowcannon.CowCannon
 api-version: '1.13'
 softdepend: [ Vault, ProtocolLib, PlaceholderAPI, DiscordSRV ]
+folia-supported: true
 libraries:
   - org.jsoup:jsoup:1.16.1
 
