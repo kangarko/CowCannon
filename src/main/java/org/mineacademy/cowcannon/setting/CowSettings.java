@@ -5,6 +5,7 @@ import org.bukkit.entity.EntityType;
 import org.mineacademy.cowcannon.CowCannon;
 
 import java.io.File;
+import java.util.List;
 
 public final class CowSettings {
 
@@ -14,6 +15,8 @@ public final class CowSettings {
 	private YamlConfiguration config;
 
 	private EntityType explodingType;
+	private List<String> headerLines;
+	private List<String> footerLines;
 
 	private CowSettings() {
 	}
@@ -40,6 +43,8 @@ public final class CowSettings {
 		}
 
 		explodingType = EntityType.valueOf(config.getString("Explosion.Entity_Type"));
+		headerLines = config.getStringList("Tablist.Header");
+		footerLines = config.getStringList("Tablist.Footer");
 	}
 
 	public void save() {
@@ -59,6 +64,14 @@ public final class CowSettings {
 
 	public EntityType getExplodingType() {
 		return explodingType;
+	}
+
+	public List<String> getHeaderLines() {
+		return headerLines;
+	}
+
+	public List<String> getFooterLines() {
+		return footerLines;
 	}
 
 	public void setExplodingType(EntityType explodingType) {

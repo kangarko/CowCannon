@@ -15,6 +15,7 @@ import org.mineacademy.cowcannon.model.Scheduler;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.task.ButterflyTask;
 import org.mineacademy.cowcannon.task.LaserPointerTask;
+import org.mineacademy.cowcannon.task.TablistTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,7 @@ public final class CowCannon extends JavaPlugin {
 	private Scheduler.Task task;
 	private Scheduler.Task task2;
 	private Scheduler.Task task3;
+	private Scheduler.Task task4;
 
 	@Override
 	public void onEnable() {
@@ -95,6 +97,7 @@ public final class CowCannon extends JavaPlugin {
 		if (!Scheduler.isFolia())
 			task2 = Scheduler.runTimer(Board.getInstance(), 0, 20 /* updates 1 per second */);
 		task3 = Scheduler.runTimer(LaserPointerTask.getInstance(), 0, 1);
+		task4 = Scheduler.runTimer(TablistTask.getInstance(), 0, 20);
 
 		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new Bungee());

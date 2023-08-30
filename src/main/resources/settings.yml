@@ -3,3 +3,11 @@ Explosion:
 
   # The entity type to explode
   Entity_Type: COW
+
+Tablist:
+  Header:
+    - <color:#ff8045>First Line</color>
+    - <color:#b85c32>Second Line</color>
+  Footer:
+    - <color:#ff8045>First Footer</color>
+    - <color:#b85c32>Second Footer</color>
