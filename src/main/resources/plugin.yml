@@ -68,6 +68,11 @@ commands:
     description: "Change a player tag above his head."
     usage: "/tag <newTag/reset>"
     permission: cowcannon.command.tag
+  hologram:
+    description: "Spawn a hologram."
+    usage: "/hologram <line1|line2|...>"
+    aliases: [ holo ]
+    permission: cowcannon.command.hologram
 permissions:
   cowcannon.command.cow:
     default: op
