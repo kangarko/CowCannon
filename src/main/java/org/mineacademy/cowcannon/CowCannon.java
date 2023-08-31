@@ -78,6 +78,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("locale").setExecutor(new LocaleCommand());
 		getCommand("bc").setExecutor(new BungeeCommand());
 		getCommand("vanish").setExecutor(new VanishCommand());
+		getCommand("fly").setExecutor(new FlyCommand());
 
 		CowSettings.getInstance().load();
 

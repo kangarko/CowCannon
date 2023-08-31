@@ -77,6 +77,10 @@ commands:
     description: "Vanish a player."
     usage: "/vanish [player]"
     permission: cowcannon.command.vanish
+  fly:
+    description: "Makes me fly."
+    usage: "/fly"
+    permission: cowcannon.command.fly
 permissions:
   cowcannon.command.cow:
     default: op
