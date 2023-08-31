@@ -44,6 +44,7 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new LaserPointerListener(), this);
 		getServer().getPluginManager().registerEvents(new ChatListener(), this);
 		getServer().getPluginManager().registerEvents(new HealthTagListener(), this);
+		getServer().getPluginManager().registerEvents(new PlayerListener(), this);
 
 		if (minorVersion >= 14)
 			getServer().getPluginManager().registerEvents(new CrawlListener(), this);

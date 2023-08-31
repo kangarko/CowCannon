@@ -1,11 +1,13 @@
 package org.mineacademy.cowcannon.model;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
+import org.mineacademy.cowcannon.api.CrawlEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,7 +67,11 @@ public final class Crawl {
 	}
 
 	public static void start(Player player) {
-		new Crawl(player);
+		CrawlEvent event = new CrawlEvent(player);
+		Bukkit.getPluginManager().callEvent(event);
+
+		if (!event.isCancelled())
+			new Crawl(event.getPlayer());
 	}
 
 	public static Crawl findPlayer(Player player) {
