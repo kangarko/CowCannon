@@ -73,6 +73,10 @@ commands:
     usage: "/hologram <line1|line2|...>"
     aliases: [ holo ]
     permission: cowcannon.command.hologram
+  vanish:
+    description: "Vanish a player."
+    usage: "/vanish [player]"
+    permission: cowcannon.command.vanish
 permissions:
   cowcannon.command.cow:
     default: op
