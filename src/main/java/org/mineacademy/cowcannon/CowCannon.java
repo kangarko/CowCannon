@@ -14,6 +14,7 @@ import org.mineacademy.cowcannon.model.CustomRecipe;
 import org.mineacademy.cowcannon.model.Scheduler;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.task.ButterflyTask;
+import org.mineacademy.cowcannon.task.ItemPickupTask;
 import org.mineacademy.cowcannon.task.LaserPointerTask;
 import org.mineacademy.cowcannon.task.TablistTask;
 
@@ -29,6 +30,7 @@ public final class CowCannon extends JavaPlugin {
 	private Scheduler.Task task2;
 	private Scheduler.Task task3;
 	private Scheduler.Task task4;
+	private Scheduler.Task task5;
 
 	@Override
 	public void onEnable() {
@@ -105,6 +107,7 @@ public final class CowCannon extends JavaPlugin {
 			task2 = Scheduler.runTimer(Board.getInstance(), 0, 20 /* updates 1 per second */);
 		task3 = Scheduler.runTimer(LaserPointerTask.getInstance(), 0, 1);
 		task4 = Scheduler.runTimer(TablistTask.getInstance(), 0, 20);
+		task5 = Scheduler.runTimer(ItemPickupTask.getInstance(), 0, 2);
 
 		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new Bungee());
@@ -124,6 +127,9 @@ public final class CowCannon extends JavaPlugin {
 
 		if (task4 != null)
 			task4.cancel();
+
+		if (task5 != null)
+			task5.cancel();
 
 		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)
 			DiscordSRVHook.unregister();
