@@ -64,6 +64,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("tag").setExecutor(new TagCommand());
 		getCommand("hologram").setExecutor(new HologramCommand());
 		getCommand("trade").setExecutor(new TradeCommand());
+		getCommand("region").setExecutor(new RegionCommand());
 
 		if (minorVersion == 8/* || minorVersion == 20*/) {
 			//EntityRegister_1_8_8.registerEntity("DeadlyChicken", 93, EntityChicken.class, AggressiveChicken1_8_8.class);

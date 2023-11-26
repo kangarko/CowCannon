@@ -85,6 +85,11 @@ commands:
     description: "Trade with a villager."
     usage: "/trade <player>"
     permission: cowcannon.command.trade
+  region:
+    description: "Test WorldGuard region."
+    usage: "/region"
+    aliases: [ rg ]
+    permission: cowcannon.command.region
 permissions:
   cowcannon.command.cow:
     default: op
