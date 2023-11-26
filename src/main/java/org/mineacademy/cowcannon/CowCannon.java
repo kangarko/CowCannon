@@ -122,6 +122,9 @@ public final class CowCannon extends JavaPlugin {
 		if (task3 != null)
 			task3.cancel();
 
+		if (task4 != null)
+			task4.cancel();
+
 		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)
 			DiscordSRVHook.unregister();
 
