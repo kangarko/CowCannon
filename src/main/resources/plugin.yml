@@ -81,6 +81,10 @@ commands:
     description: "Makes me fly."
     usage: "/fly"
     permission: cowcannon.command.fly
+  trade:
+    description: "Trade with a villager."
+    usage: "/trade <player>"
+    permission: cowcannon.command.trade
 permissions:
   cowcannon.command.cow:
     default: op
