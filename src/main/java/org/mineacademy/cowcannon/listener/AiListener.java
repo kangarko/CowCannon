@@ -3,6 +3,7 @@ package org.mineacademy.cowcannon.listener;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -22,7 +23,7 @@ public class AiListener implements Listener {
 
 	private final Map<UUID, Conversation> conversingPlayers = new HashMap<>();
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void onChatMessage(AsyncPlayerChatEvent event) {
 		final Player player = event.getPlayer();
 		final Conversation conversation = this.conversingPlayers.get(player.getUniqueId());

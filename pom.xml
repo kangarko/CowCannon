@@ -133,6 +133,10 @@
             <id>enginehub-maven</id>
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
+        <repository>
+            <id>meteordev</id>
+            <url>https://maven.meteordev.org/releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -216,6 +220,12 @@
             <artifactId>service</artifactId>
             <version>0.18.2</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>meteordevelopment</groupId>
+            <artifactId>starscript</artifactId>
+            <version>0.2.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
