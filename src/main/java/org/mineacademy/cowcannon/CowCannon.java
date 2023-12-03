@@ -48,6 +48,7 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new HealthTagListener(), this);
 		getServer().getPluginManager().registerEvents(new PlayerListener(), this);
 		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
+		getServer().getPluginManager().registerEvents(new AiListener(), this);
 
 		if (minorVersion >= 14)
 			getServer().getPluginManager().registerEvents(new CrawlListener(), this);
@@ -84,6 +85,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("bc").setExecutor(new BungeeCommand());
 		getCommand("vanish").setExecutor(new VanishCommand());
 		getCommand("fly").setExecutor(new FlyCommand());
+		getCommand("ai").setExecutor(new AiCommand());
 
 		CowSettings.getInstance().load();
 

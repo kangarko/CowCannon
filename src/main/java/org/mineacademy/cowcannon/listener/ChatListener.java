@@ -1,16 +1,6 @@
 package org.mineacademy.cowcannon.listener;
 
-import github.scarsz.discordsrv.DiscordSRV;
-import github.scarsz.discordsrv.dependencies.jda.api.entities.TextChannel;
-import github.scarsz.discordsrv.util.WebhookUtil;
-import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.mineacademy.cowcannon.hook.DiscordSRVHook;
 
 public final class ChatListener implements Listener {
 
@@ -27,7 +17,7 @@ public final class ChatListener implements Listener {
 		event.message(replacedText);
 	}*/
 
-	@EventHandler
+	/*@EventHandler
 	public void onChat(AsyncPlayerChatEvent event) {
 		event.setCancelled(true);
 
@@ -51,5 +41,5 @@ public final class ChatListener implements Listener {
 
 			WebhookUtil.deliverMessage(textChannel, event.getPlayer(), event.getMessage());
 		}
-	}
+	}*/
 }

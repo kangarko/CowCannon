@@ -6,7 +6,7 @@ softdepend: [ Vault, ProtocolLib, PlaceholderAPI, DiscordSRV ]
 folia-supported: true
 libraries:
   - org.jsoup:jsoup:1.16.1
-
+  - com.theokanning.openai-gpt3-java:service:0.18.2
 commands:
   cow:
     description: "Spawn an exploding cow"
@@ -90,6 +90,10 @@ commands:
     usage: "/region"
     aliases: [ rg ]
     permission: cowcannon.command.region
+  ai:
+    description: "Test OpenAI GPT-3."
+    usage: "/ai <name> <role>"
+    permission: cowcannon.command.ai
 permissions:
   cowcannon.command.cow:
     default: op

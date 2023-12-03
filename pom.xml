@@ -211,5 +211,11 @@
             <scope>provided</scope>
             <classifier>remapped-mojang</classifier>
         </dependency>-->
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>service</artifactId>
+            <version>0.18.2</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>
