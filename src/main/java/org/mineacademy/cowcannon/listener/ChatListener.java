@@ -1,18 +1,13 @@
 package org.mineacademy.cowcannon.listener;
 
-import meteordevelopment.starscript.Script;
+import de.themoep.minedown.adventure.MineDown;
+import io.papermc.paper.event.player.AsyncChatEvent;
 import meteordevelopment.starscript.StandardLib;
 import meteordevelopment.starscript.Starscript;
-import meteordevelopment.starscript.compiler.Compiler;
-import meteordevelopment.starscript.compiler.Parser;
-import meteordevelopment.starscript.utils.Error;
-import meteordevelopment.starscript.value.ValueMap;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import net.kyori.adventure.text.TextComponent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.mineacademy.cowcannon.util.Common;
 
 public final class ChatListener implements Listener {
 
@@ -24,18 +19,15 @@ public final class ChatListener implements Listener {
 		StandardLib.init(starscript);
 	}
 
-	/*@EventHandler
+	@EventHandler
 	public void onChat(AsyncChatEvent event) {
-		//for (Audience audience : event.viewers()) {
-		//	System.out.println(audience);
-		//}
-
 		TextComponent textComponent = (TextComponent) event.message();
-		MiniMessage miniMessage = MiniMessage.miniMessage();
 
-		Component replacedText = miniMessage.deserialize(textComponent.content());
-		event.message(replacedText);
-	}*/
+		//MiniMessage miniMessage = MiniMessage.miniMessage();
+		//Component replacedText = miniMessage.deserialize(textComponent.content());
+
+		event.message(MineDown.parse(textComponent.content()));
+	}
 
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent event) {
@@ -62,7 +54,7 @@ public final class ChatListener implements Listener {
 			WebhookUtil.deliverMessage(textChannel, event.getPlayer(), event.getMessage());
 		}*/
 
-		Player player = event.getPlayer();
+		/*Player player = event.getPlayer();
 		Parser.Result result = Parser.parse(event.getMessage());
 
 		// Check for errors
@@ -91,6 +83,6 @@ public final class ChatListener implements Listener {
 
 		this.starscript.set("player", playerMap);
 
-		System.out.println(starscript.run(script)); // Hello MineGame159!
+		System.out.println(starscript.run(script)); // Hello MineGame159!*/
 	}
 }
