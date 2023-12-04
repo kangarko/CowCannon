@@ -7,6 +7,7 @@ folia-supported: true
 libraries:
   - org.jsoup:jsoup:1.16.1
   - com.theokanning.openai-gpt3-java:service:0.18.2
+  - com.sendgrid:sendgrid-java:4.10.1
 commands:
   cow:
     description: "Spawn an exploding cow"
@@ -94,6 +95,10 @@ commands:
     description: "Test OpenAI GPT-3."
     usage: "/ai <name> <role>"
     permission: cowcannon.command.ai
+  email:
+    description: "Test email sending."
+    usage: "/email <params...>"
+    permission: cowcannon.command.email
 permissions:
   cowcannon.command.cow:
     default: op

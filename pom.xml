@@ -237,5 +237,11 @@
             <version>1.6.2-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.sendgrid</groupId>
+            <artifactId>sendgrid-java</artifactId>
+            <version>4.10.1</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>
