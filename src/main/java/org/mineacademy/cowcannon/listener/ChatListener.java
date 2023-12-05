@@ -2,8 +2,6 @@ package org.mineacademy.cowcannon.listener;
 
 import de.themoep.minedown.adventure.MineDown;
 import io.papermc.paper.event.player.AsyncChatEvent;
-import meteordevelopment.starscript.StandardLib;
-import meteordevelopment.starscript.Starscript;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,12 +9,12 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public final class ChatListener implements Listener {
 
-	private final Starscript starscript;
+	//private final Starscript starscript;
 
 	public ChatListener() {
-		this.starscript = new Starscript();
+		//this.starscript = new Starscript();
 
-		StandardLib.init(starscript);
+		//StandardLib.init(starscript);
 	}
 
 	@EventHandler
