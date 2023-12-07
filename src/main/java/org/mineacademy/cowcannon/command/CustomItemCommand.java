@@ -44,6 +44,9 @@ public final class CustomItemCommand implements CommandExecutor {
 			// have an alternative code for old MC version
 		}
 		
+		// NEW: You can set custom model data this way:
+		meta.setCustomModelData(1);
+		
 		customBucket.setItemMeta(meta);
 
 		player.getInventory().addItem(customBucket);
