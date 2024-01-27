@@ -9,23 +9,18 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.mineacademy.cowcannon.hook.VaultHook;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.util.Keys;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 public final class EntityListener implements Listener {
 
-	private Map<UUID, PermissionAttachment> permissions = new HashMap<>();
+	//private Map<UUID, PermissionAttachment> permissions = new HashMap<>();
 
 	@EventHandler
 	public void onEntityKill(EntityDeathEvent event) {
-		Player killer = event.getEntity().getKiller();
+		final Player killer = event.getEntity().getKiller();
 
 		if (killer != null && event.getEntity() instanceof Cow) {
 			VaultHook.deposit(killer, 1);
@@ -40,12 +35,12 @@ public final class EntityListener implements Listener {
 		try {
 			if (event.getHand() != EquipmentSlot.HAND)
 				return;
-		} catch (Throwable t) {
+		} catch (final Throwable t) {
 			// Ignore
 		}
 
-		Player player = event.getPlayer();
-		Entity entity = event.getRightClicked();
+		final Player player = event.getPlayer();
+		final Entity entity = event.getRightClicked();
 
 		/*player.sendMessage(Component
 				.text("Hello, click me!")
@@ -61,31 +56,31 @@ public final class EntityListener implements Listener {
 		// iterate through player.getEffectivePermissions() as foreach
 		/*for (PermissionAttachmentInfo permission : player.getEffectivePermissions()) {
 			PermissionAttachment attachment = permission.getAttachment();
-		
+
 			System.out.println("Permission: " + permission.getPermission() + " from " + (attachment == null ? "default" : attachment.getPlugin().getName()));
 		}
-		
+
 		System.out.println("Before: " + permissions);
-		
+
 		if (permissions.containsKey(player.getUniqueId())) {
 			PermissionAttachment permission = permissions.remove(player.getUniqueId());
 			player.removeAttachment(permission);
-		
+
 			player.sendMessage("You no longer have the perm!");
-		
+
 		} else {
 			PermissionAttachment permission = player.addAttachment(CowCannon.getInstance(), "funky.demo.test", true);
-		
+
 			permissions.put(player.getUniqueId(), permission);
 			player.sendMessage("You now have the perm!");
 		}
-		
+
 		System.out.println("After: " + permissions);*/
 
 		if (player.getItemInHand().getItemMeta() != null) {
 			try {
-				PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
-				PersistentDataContainer handItemContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
+				final PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
+				final PersistentDataContainer handItemContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
 
 				if (entity.getType() == CowSettings.getInstance().getExplodingType()
 						&& entityContainer.has(Keys.CUSTOM_COW)
@@ -99,7 +94,7 @@ public final class EntityListener implements Listener {
 
 					entity.getWorld().createExplosion(entity.getLocation(), 2.5F);
 				}
-			} catch (LinkageError err) {
+			} catch (final LinkageError err) {
 				// Ignore
 			}
 		}

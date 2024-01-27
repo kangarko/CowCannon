@@ -1,40 +1,39 @@
 package org.mineacademy.cowcannon.hook;
 
-import net.milkbowl.vault.chat.Chat;
-import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
+import net.milkbowl.vault.economy.Economy;
+
 public final class VaultHook {
 
 	private static Economy economy = null;
-	private static Permission permissions = null;
-	private static Chat chat = null;
+	//private static Permission permissions = null;
+	//private static Chat chat = null;
 
 	private VaultHook() {
 	}
 
 	private static void setupEconomy() {
-		RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
+		final RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
 
 		if (rsp != null)
 			economy = rsp.getProvider();
 	}
 
 	private static void setupChat() {
-		RegisteredServiceProvider<Chat> rsp = Bukkit.getServicesManager().getRegistration(Chat.class);
+		//RegisteredServiceProvider<Chat> rsp = Bukkit.getServicesManager().getRegistration(Chat.class);
 
-		if (rsp != null)
-			chat = rsp.getProvider();
+		//if (rsp != null)
+		//	chat = rsp.getProvider();
 	}
 
 	private static void setupPermissions() {
-		RegisteredServiceProvider<Permission> rsp = Bukkit.getServicesManager().getRegistration(Permission.class);
+		//RegisteredServiceProvider<Permission> rsp = Bukkit.getServicesManager().getRegistration(Permission.class);
 
-		if (rsp != null)
-			permissions = rsp.getProvider();
+		//if (rsp != null)
+		//	permissions = rsp.getProvider();
 	}
 
 	public static boolean hasEconomy() {
