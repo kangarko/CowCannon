@@ -1,14 +1,15 @@
 package org.mineacademy.cowcannon.command;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.mineacademy.cowcannon.CowCannon;
-import org.mineacademy.cowcannon.hook.WorldEditHook;
+import org.mineacademy.cowcannon.model.Region;
+import org.mineacademy.cowcannon.model.Regions;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -33,6 +34,8 @@ public final class RegionCommand implements CommandExecutor {
 		}
 
 		CowCannon plugin = CowCannon.getInstance();
+		Regions regions = Regions.getInstance();
+
 		Player player = (Player) sender;
 		String param = args[0].toLowerCase();
 
@@ -63,15 +66,35 @@ public final class RegionCommand implements CommandExecutor {
 				return true;
 			}
 
-			File file = new File(plugin.getDataFolder(), "schematic/" + args[1] + ".schem");
+			/*File file = new File(plugin.getDataFolder(), "schematic/" + args[1] + ".schem");
 
 			if (!file.getParentFile().exists())
 				file.getParentFile().mkdirs();
 
-			WorldEditHook.save(selection.getFirst(), selection.getSecond(), file);
+			WorldEditHook.save(selection.getFirst(), selection.getSecond(), file);*/
+
+			String name = args[1];
+
+			if (regions.findRegion(name) != null) {
+				sender.sendMessage(ChatColor.RED + "Region by this name already exists.");
+
+				return true;
+			}
+
+			regions.saveRegion(name, selection.getFirst(), selection.getSecond());
+
 			sender.sendMessage("§8[§a✔§8] §7Schematic saved!");
 
-		} else if ("paste".equals(param)) {
+		} else if ("list".equals(param)) {
+			sender.sendMessage(ChatColor.GOLD + "Installed regions: " + String.join(", ", regions.getRegionsNames()));
+
+		} else if ("current".equals(param)) {
+			Region standingIn = regions.findRegion(player.getLocation());
+
+			sender.sendMessage(ChatColor.GOLD + "You are standing in region: "
+					+ (standingIn == null ? "none" : standingIn.getName()));
+
+		/*} else if ("paste".equals(param)) {
 			if (args.length != 2) {
 				sender.sendMessage("§8[§6🛑§8] §7Usage: /region paste <name>");
 
@@ -87,7 +110,7 @@ public final class RegionCommand implements CommandExecutor {
 			}
 
 			WorldEditHook.paste(player.getLocation(), file);
-			sender.sendMessage("§8[§a✔§8] §7Schematic pasted at " + player.getLocation());
+			sender.sendMessage("§8[§a✔§8] §7Schematic pasted at " + player.getLocation());*/
 
 		} else
 			sender.sendMessage("§8[§6🛑§8] §7Usage: /region <pos1|pos2|save <name>|paste <name>>");

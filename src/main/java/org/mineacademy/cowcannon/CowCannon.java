@@ -2,18 +2,52 @@ package org.mineacademy.cowcannon;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mineacademy.cowcannon.command.*;
+import org.mineacademy.cowcannon.command.AiCommand;
+import org.mineacademy.cowcannon.command.BungeeCommand;
+import org.mineacademy.cowcannon.command.ButterflyCommand;
+import org.mineacademy.cowcannon.command.CowCommand;
+import org.mineacademy.cowcannon.command.CrawlCommand;
+import org.mineacademy.cowcannon.command.CustomItemCommand;
+import org.mineacademy.cowcannon.command.DisplayEntityCommand;
+import org.mineacademy.cowcannon.command.EconomyCommand;
+import org.mineacademy.cowcannon.command.EmailCommand;
+import org.mineacademy.cowcannon.command.FlyCommand;
+import org.mineacademy.cowcannon.command.GiantCommand;
+import org.mineacademy.cowcannon.command.GuiCommand;
+import org.mineacademy.cowcannon.command.HologramCommand;
+import org.mineacademy.cowcannon.command.LocaleCommand;
+import org.mineacademy.cowcannon.command.PsychoCommand;
+import org.mineacademy.cowcannon.command.ReadCommand;
+import org.mineacademy.cowcannon.command.RegionCommand;
+import org.mineacademy.cowcannon.command.TagCommand;
+import org.mineacademy.cowcannon.command.ToastCommand;
+import org.mineacademy.cowcannon.command.TradeCommand;
+import org.mineacademy.cowcannon.command.VanishCommand;
 import org.mineacademy.cowcannon.hook.CowEconomy;
 import org.mineacademy.cowcannon.hook.DiscordSRVHook;
 import org.mineacademy.cowcannon.hook.PlaceholderAPIHook;
 import org.mineacademy.cowcannon.hook.ProtocolLibHook;
-import org.mineacademy.cowcannon.listener.*;
+import org.mineacademy.cowcannon.listener.AiListener;
+import org.mineacademy.cowcannon.listener.ChatListener;
+import org.mineacademy.cowcannon.listener.CrawlListener;
+import org.mineacademy.cowcannon.listener.EntityListener;
+import org.mineacademy.cowcannon.listener.GuiListener;
+import org.mineacademy.cowcannon.listener.HealthTagListener;
+import org.mineacademy.cowcannon.listener.InventoryListener;
+import org.mineacademy.cowcannon.listener.LaserPointerListener;
+import org.mineacademy.cowcannon.listener.PlayerListener;
+import org.mineacademy.cowcannon.listener.RegionListener;
 import org.mineacademy.cowcannon.model.Board;
 import org.mineacademy.cowcannon.model.Bungee;
 import org.mineacademy.cowcannon.model.CustomRecipe;
+import org.mineacademy.cowcannon.model.Regions;
 import org.mineacademy.cowcannon.model.Scheduler;
 import org.mineacademy.cowcannon.setting.CowSettings;
-import org.mineacademy.cowcannon.task.*;
+import org.mineacademy.cowcannon.task.ButterflyTask;
+import org.mineacademy.cowcannon.task.ItemPickupTask;
+import org.mineacademy.cowcannon.task.LaserPointerTask;
+import org.mineacademy.cowcannon.task.MessageBroadcasterTask;
+import org.mineacademy.cowcannon.task.TablistTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +81,7 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new PlayerListener(), this);
 		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 		getServer().getPluginManager().registerEvents(new AiListener(), this);
+		getServer().getPluginManager().registerEvents(new RegionListener(), this);
 
 		if (minorVersion >= 14)
 			getServer().getPluginManager().registerEvents(new CrawlListener(), this);
@@ -113,6 +148,8 @@ public final class CowCannon extends JavaPlugin {
 
 		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new Bungee());
+
+		Regions.getInstance().load();
 	}
 
 	@Override
