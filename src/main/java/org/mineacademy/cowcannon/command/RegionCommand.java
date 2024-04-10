@@ -1,18 +1,17 @@
 package org.mineacademy.cowcannon.command;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.mineacademy.cowcannon.CowCannon;
 import org.mineacademy.cowcannon.model.Region;
 import org.mineacademy.cowcannon.model.Regions;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public final class RegionCommand implements CommandExecutor {
 
@@ -33,7 +32,6 @@ public final class RegionCommand implements CommandExecutor {
 			return true;
 		}
 
-		CowCannon plugin = CowCannon.getInstance();
 		Regions regions = Regions.getInstance();
 
 		Player player = (Player) sender;
@@ -67,10 +65,10 @@ public final class RegionCommand implements CommandExecutor {
 			}
 
 			/*File file = new File(plugin.getDataFolder(), "schematic/" + args[1] + ".schem");
-
+			
 			if (!file.getParentFile().exists())
 				file.getParentFile().mkdirs();
-
+			
 			WorldEditHook.save(selection.getFirst(), selection.getSecond(), file);*/
 
 			String name = args[1];
@@ -94,23 +92,23 @@ public final class RegionCommand implements CommandExecutor {
 			sender.sendMessage(ChatColor.GOLD + "You are standing in region: "
 					+ (standingIn == null ? "none" : standingIn.getName()));
 
-		/*} else if ("paste".equals(param)) {
-			if (args.length != 2) {
-				sender.sendMessage("§8[§6🛑§8] §7Usage: /region paste <name>");
-
-				return true;
-			}
-
-			File file = new File(plugin.getDataFolder(), "schematic/" + args[1] + ".schem");
-
-			if (!file.exists()) {
-				sender.sendMessage("§8[§c❌§8] §7Schematic not found!");
-
-				return true;
-			}
-
-			WorldEditHook.paste(player.getLocation(), file);
-			sender.sendMessage("§8[§a✔§8] §7Schematic pasted at " + player.getLocation());*/
+			/*} else if ("paste".equals(param)) {
+				if (args.length != 2) {
+					sender.sendMessage("§8[§6🛑§8] §7Usage: /region paste <name>");
+			
+					return true;
+				}
+			
+				File file = new File(plugin.getDataFolder(), "schematic/" + args[1] + ".schem");
+			
+				if (!file.exists()) {
+					sender.sendMessage("§8[§c❌§8] §7Schematic not found!");
+			
+					return true;
+				}
+			
+				WorldEditHook.paste(player.getLocation(), file);
+				sender.sendMessage("§8[§a✔§8] §7Schematic pasted at " + player.getLocation());*/
 
 		} else
 			sender.sendMessage("§8[§6🛑§8] §7Usage: /region <pos1|pos2|save <name>|paste <name>>");
