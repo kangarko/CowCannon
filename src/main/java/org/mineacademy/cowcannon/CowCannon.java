@@ -27,6 +27,7 @@ import org.mineacademy.cowcannon.command.TagCommand;
 import org.mineacademy.cowcannon.command.ToastCommand;
 import org.mineacademy.cowcannon.command.TradeCommand;
 import org.mineacademy.cowcannon.command.VanishCommand;
+import org.mineacademy.cowcannon.gui.MenuListener;
 import org.mineacademy.cowcannon.hook.CowEconomy;
 import org.mineacademy.cowcannon.hook.DiscordSRVHook;
 import org.mineacademy.cowcannon.hook.PlaceholderAPIHook;
@@ -84,6 +85,7 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 		getServer().getPluginManager().registerEvents(new AiListener(), this);
 		getServer().getPluginManager().registerEvents(new RegionListener(), this);
+		getServer().getPluginManager().registerEvents(new MenuListener(), this);
 
 		if (version >= 14)
 			getServer().getPluginManager().registerEvents(new CrawlListener(), this);
