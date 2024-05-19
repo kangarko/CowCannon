@@ -1,5 +1,9 @@
 package org.mineacademy.cowcannon;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mineacademy.cowcannon.command.AiCommand;
@@ -49,10 +53,6 @@ import org.mineacademy.cowcannon.task.LaserPointerTask;
 import org.mineacademy.cowcannon.task.MessageBroadcasterTask;
 import org.mineacademy.cowcannon.task.TablistTask;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 public final class CowCannon extends JavaPlugin {
 
 	private static final Map<UUID, String> playerTags = new HashMap<>();
@@ -67,11 +67,13 @@ public final class CowCannon extends JavaPlugin {
 	@Override
 	public void onEnable() {
 
-		// This gives a string like 1_16_R3
-		final String minecraftVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+		// Updated for the disappearance of safeguard in 1.20.5+ on Paper. Supports all versions including legacy and Spigot.
+		final String bukkitVersion = Bukkit.getServer().getBukkitVersion(); // 1.20.6-R0.1-SNAPSHOT
+		final String versionString = bukkitVersion.split("\\-")[0]; // 1.20.6
+		final String[] versions = versionString.split("\\.");
 
-		// We want to extract the 16, which equals the MC version, such as Minecraft 1.16
-		final int minorVersion = Integer.parseInt(minecraftVersion.split("_")[1]);
+		final int version = Integer.parseInt(versions[1]); // 20 in 1.20.6
+		final int subversion = versions.length == 3 ? Integer.parseInt(versions[2]) : 0; // 6 in 1.20.6
 
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
 		getServer().getPluginManager().registerEvents(new GuiListener(), this);
@@ -83,13 +85,13 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new AiListener(), this);
 		getServer().getPluginManager().registerEvents(new RegionListener(), this);
 
-		if (minorVersion >= 14)
+		if (version >= 14)
 			getServer().getPluginManager().registerEvents(new CrawlListener(), this);
 
 		getCommand("cow").setExecutor(new CowCommand());
 		getCommand("butterfly").setExecutor(new ButterflyCommand());
 
-		if (minorVersion >= 19)
+		if (version >= 19)
 			getCommand("displayentity").setExecutor(new DisplayEntityCommand());
 
 		getCommand("customitem").setExecutor(new CustomItemCommand());
@@ -103,16 +105,16 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("region").setExecutor(new RegionCommand());
 		getCommand("email").setExecutor(new EmailCommand());
 
-		if (minorVersion == 8/* || minorVersion == 20*/) {
+		if (version == 8/* || minorVersion == 20*/) {
 			//EntityRegister_1_8_8.registerEntity("DeadlyChicken", 93, EntityChicken.class, AggressiveChicken1_8_8.class);
 
 			getCommand("psycho").setExecutor(new PsychoCommand());
 		}
 
-		if (minorVersion >= 14)
+		if (version >= 14)
 			getCommand("crawl").setExecutor(new CrawlCommand());
 
-		if (minorVersion >= 12)
+		if (version >= 12)
 			getCommand("toast").setExecutor(new ToastCommand());
 
 		getCommand("locale").setExecutor(new LocaleCommand());
@@ -123,7 +125,7 @@ public final class CowCannon extends JavaPlugin {
 
 		CowSettings.getInstance().load();
 
-		if (minorVersion >= 13)
+		if (version >= 13)
 			CustomRecipe.register();
 
 		if (getServer().getPluginManager().getPlugin("ProtocolLib") != null)
