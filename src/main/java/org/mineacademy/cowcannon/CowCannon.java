@@ -73,7 +73,7 @@ public final class CowCannon extends JavaPlugin {
 		final String[] versions = versionString.split("\\.");
 
 		final int version = Integer.parseInt(versions[1]); // 20 in 1.20.6
-		final int subversion = versions.length == 3 ? Integer.parseInt(versions[2]) : 0; // 6 in 1.20.6
+		//final int subversion = versions.length == 3 ? Integer.parseInt(versions[2]) : 0; // 6 in 1.20.6
 
 		getServer().getPluginManager().registerEvents(new EntityListener(), this);
 		getServer().getPluginManager().registerEvents(new GuiListener(), this);
