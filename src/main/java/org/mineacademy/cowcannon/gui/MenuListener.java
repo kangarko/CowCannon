@@ -39,7 +39,7 @@ public class MenuListener implements Listener {
 		final Player dude = (Player) event.getPlayer();
 
 		if (dude.hasMetadata("CoolMenuPlugin")) {
-			final Menu menu = (Menu) dude.getMetadata("CoolMenuPlugin").get(0).value();
+			//final Menu menu = (Menu) dude.getMetadata("CoolMenuPlugin").get(0).value();
 			//menu.onClose();
 
 			System.out.println("Removing menu metadata.");
