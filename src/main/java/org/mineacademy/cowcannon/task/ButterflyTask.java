@@ -1,15 +1,15 @@
 package org.mineacademy.cowcannon.task;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
 
 public final class ButterflyTask implements Runnable {
 
@@ -22,40 +22,50 @@ public final class ButterflyTask implements Runnable {
 
 	@Override
 	public void run() {
-		for (Player player : Bukkit.getOnlinePlayers())
+		for (final Player player : Bukkit.getOnlinePlayers())
 			if (hasPlayer(player.getUniqueId()))
 				generateButterflyWingEffect(player);
 	}
 
 	private void generateButterflyWingEffect(Player player) {
-		Location location = player.getLocation();
+		final Location location = player.getLocation();
 
 		location.add(location.getDirection().normalize().multiply(-0.3)); // move behind the player
 		location.add(0, 0.85, 0); // push down to chest
 		location.setPitch(0F); // stop vertical rotation, only make particles rotate to sides, not up and down
 
-		double wingSize = 0.35;
-		double circlesAmount = 4;
+		final double wingSize = 0.35;
+		final double circlesAmount = 4;
 
 		for (double degree = 0; degree < 360; degree += 2 /* particle density */) {
-			double radians = Math.toRadians(degree);
+			final double radians = Math.toRadians(degree);
 
-			double circle = wingSize * Math.pow(Math.E, Math.cos(radians));
-			double radius = circle - Math.cos(circlesAmount * radians);
+			final double circle = wingSize * Math.pow(Math.E, Math.cos(radians));
+			final double radius = circle - Math.cos(circlesAmount * radians);
 
-			double x = Math.sin(radians) * radius;
-			double z = Math.cos(radians) * radius;
+			final double x = Math.sin(radians) * radius;
+			final double z = Math.cos(radians) * radius;
 
-			Vector particleLocation = new Vector(x, 0, z);
+			final Vector particleLocation = new Vector(x, 0, z);
 
 			rotateAroundAxisX(particleLocation, -90);
 			rotateAroundAxisY(particleLocation, location.getYaw());
 
 			try {
-				Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(212, 146, 53), 0.6F);
-				player.getWorld().spawnParticle(Particle.REDSTONE, location.clone().add(particleLocation), 0, dust);
+				final Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(212, 146, 53), 0.6F);
 
-			} catch (Throwable t) {
+				Particle particle;
+
+				try {
+					particle = Particle.DUST;
+
+				} catch (final Throwable t) { // Spigot 1.20.5+ changed names
+					particle = Particle.valueOf("REDSTONE");
+				}
+
+				player.getWorld().spawnParticle(particle, location.clone().add(particleLocation), 0, dust);
+
+			} catch (final Throwable t) {
 				// Unsupported
 			}
 		}
@@ -64,10 +74,10 @@ public final class ButterflyTask implements Runnable {
 	private void rotateAroundAxisX(Vector vector, double angle) {
 		angle = Math.toRadians(angle);
 
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
-		double y = vector.getY() * cos - vector.getZ() * sin;
-		double z = vector.getY() * sin + vector.getZ() * cos;
+		final double cos = Math.cos(angle);
+		final double sin = Math.sin(angle);
+		final double y = vector.getY() * cos - vector.getZ() * sin;
+		final double z = vector.getY() * sin + vector.getZ() * cos;
 
 		vector.setY(y).setZ(z);
 	}
@@ -76,10 +86,10 @@ public final class ButterflyTask implements Runnable {
 		angle = -angle;
 		angle = Math.toRadians(angle);
 
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
-		double x = vector.getX() * cos + vector.getZ() * sin;
-		double z = vector.getX() * -sin + vector.getZ() * cos;
+		final double cos = Math.cos(angle);
+		final double sin = Math.sin(angle);
+		final double x = vector.getX() * cos + vector.getZ() * sin;
+		final double z = vector.getX() * -sin + vector.getZ() * cos;
 
 		vector.setX(x).setZ(z);
 	}

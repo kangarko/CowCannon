@@ -1,5 +1,7 @@
 package org.mineacademy.cowcannon.command;
 
+import java.util.Arrays;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -14,8 +16,6 @@ import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import org.mineacademy.cowcannon.util.Keys;
 
-import java.util.Arrays;
-
 public final class CustomItemCommand implements CommandExecutor {
 
 	@Override
@@ -26,9 +26,9 @@ public final class CustomItemCommand implements CommandExecutor {
 			return true;
 		}
 
-		Player player = (Player) sender;
-		ItemStack customBucket = new ItemStack(Material.BUCKET);
-		ItemMeta meta = customBucket.getItemMeta();
+		final Player player = (Player) sender;
+		final ItemStack customBucket = new ItemStack(Material.BUCKET);
+		final ItemMeta meta = customBucket.getItemMeta();
 
 		meta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Custom Bucket");
 		meta.setLore(Arrays.asList(
@@ -36,17 +36,24 @@ public final class CustomItemCommand implements CommandExecutor {
 				ChatColor.GRAY + "Right click me on a cow!"));
 
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-		meta.addEnchant(Enchantment.ARROW_DAMAGE, 1, true);
+
+		Enchantment ench = Enchantment.getByName("ARROW_DAMAGE");
+
+		// Spigot 1.20.5+ changed names
+		if (ench == null)
+			ench = Enchantment.getByName("SHARPNESS");
+
+		meta.addEnchant(ench, 1, true);
 
 		try {
 			meta.getPersistentDataContainer().set(Keys.CUSTOM_BUCKET, PersistentDataType.BOOLEAN, true);
-		} catch (LinkageError t) {
+		} catch (final LinkageError t) {
 			// have an alternative code for old MC version
 		}
-		
+
 		// NEW: You can set custom model data this way:
 		meta.setCustomModelData(1);
-		
+
 		customBucket.setItemMeta(meta);
 
 		player.getInventory().addItem(customBucket);

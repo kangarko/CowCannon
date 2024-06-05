@@ -1,6 +1,11 @@
 package org.mineacademy.cowcannon.task;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
@@ -14,26 +19,35 @@ public final class LaserPointerTask implements Runnable {
 
 	@Override
 	public void run() {
-		int length = 5;
-		double particleDistance = 0.5;
+		final int length = 5;
+		final double particleDistance = 0.5;
 
-		for (Player online : Bukkit.getOnlinePlayers()) {
-			ItemStack hand = online.getItemInHand();
+		for (final Player online : Bukkit.getOnlinePlayers()) {
+			final ItemStack hand = online.getItemInHand();
 
 			if (hand.hasItemMeta() && hand.getItemMeta().getDisplayName().equals(ChatColor.WHITE + "Laser Pointer")) {
-				Location location = online.getLocation().add(0, 1, 0);
+				final Location location = online.getLocation().add(0, 1, 0);
 
 				for (double waypoint = 1; waypoint < length; waypoint += particleDistance) {
-					Vector vector = location.getDirection().multiply(waypoint);
+					final Vector vector = location.getDirection().multiply(waypoint);
 					location.add(vector);
 
 					if (location.getBlock().getType() != Material.AIR)
 						break;
 
 					try {
-						location.getWorld().spawnParticle(Particle.REDSTONE, location, 1, new Particle.DustOptions(Color.YELLOW, 0.75F));
+						Particle particle;
 
-					} catch (Throwable t) {
+						try {
+							particle = Particle.DUST;
+
+						} catch (final Throwable t) { // Spigot 1.20.5+ changed names
+							particle = Particle.valueOf("REDSTONE");
+						}
+
+						location.getWorld().spawnParticle(particle, location, 1, new Particle.DustOptions(Color.YELLOW, 0.75F));
+
+					} catch (final Throwable t) {
 						// Unsupported
 					}
 				}

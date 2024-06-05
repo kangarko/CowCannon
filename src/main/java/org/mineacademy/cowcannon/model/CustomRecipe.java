@@ -1,46 +1,57 @@
 package org.mineacademy.cowcannon.model;
 
+import java.util.Arrays;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.FurnaceRecipe;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.mineacademy.cowcannon.CowCannon;
-
-import java.util.Arrays;
 
 public final class CustomRecipe {
 
 	public static void register() {
-		ItemStack superPaper = new ItemStack(Material.PAPER);
-		ItemMeta superPaperMeta = superPaper.getItemMeta();
+		final ItemStack superPaper = new ItemStack(Material.PAPER);
+		final ItemMeta superPaperMeta = superPaper.getItemMeta();
 		superPaperMeta.setDisplayName(ChatColor.GOLD + "Super Paper");
-		superPaperMeta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+
+		try {
+			superPaperMeta.addEnchant(Enchantment.SHARPNESS, 1, true);
+		} catch (final NoSuchFieldError err) {
+			superPaperMeta.addEnchant(Enchantment.getByName("DAMAGE_ALL"), 1, true);
+		}
+
 		superPaperMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		superPaper.setItemMeta(superPaperMeta);
 
-		ShapelessRecipe recipe0 = new ShapelessRecipe(new NamespacedKey(CowCannon.getInstance(), "SuperPaperRecipe"), superPaper);
+		final ShapelessRecipe recipe0 = new ShapelessRecipe(new NamespacedKey(CowCannon.getInstance(), "SuperPaperRecipe"), superPaper);
 		recipe0.addIngredient(3, Material.BOOK);
 		Bukkit.addRecipe(recipe0);
 
-		ItemStack dickSword = new ItemStack(Material.DIAMOND_SWORD);
-		ItemMeta dickSwordMeta = dickSword.getItemMeta();
+		final ItemStack dickSword = new ItemStack(Material.DIAMOND_SWORD);
+		final ItemMeta dickSwordMeta = dickSword.getItemMeta();
 		dickSwordMeta.setDisplayName(ChatColor.WHITE + "Dick Sword");
 		dickSwordMeta.setLore(Arrays.asList("", ChatColor.GRAY + "Dig more!"));
 		dickSword.setItemMeta(dickSwordMeta);
 
-		FurnaceRecipe recipe1 = new FurnaceRecipe(new NamespacedKey(CowCannon.getInstance(), "DickSwordRecipe"),
+		final FurnaceRecipe recipe1 = new FurnaceRecipe(new NamespacedKey(CowCannon.getInstance(), "DickSwordRecipe"),
 				dickSword, new RecipeChoice.ExactChoice(superPaper), 10, 20 /*1 sec*/);
 		Bukkit.addRecipe(recipe1);
 
-		ItemStack laserPointer = new ItemStack(Material.NETHER_STAR);
-		ItemMeta laserPointerMeta = laserPointer.getItemMeta();
+		final ItemStack laserPointer = new ItemStack(Material.NETHER_STAR);
+		final ItemMeta laserPointerMeta = laserPointer.getItemMeta();
 		laserPointerMeta.setDisplayName(ChatColor.WHITE + "Laser Pointer");
 		laserPointer.setItemMeta(laserPointerMeta);
 
-		ShapedRecipe recipe2 = new ShapedRecipe(new NamespacedKey(CowCannon.getInstance(), "LaserPointerRecipe"), laserPointer);
+		final ShapedRecipe recipe2 = new ShapedRecipe(new NamespacedKey(CowCannon.getInstance(), "LaserPointerRecipe"), laserPointer);
 		recipe2.shape(
 				" D ",
 				"DBD",
