@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon.gui.foundation;
+/*package org.mineacademy.cowcannon.gui.foundation;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -114,10 +114,9 @@ public class MenuOne extends Menu {
             return ItemCreator.of(CompMaterial.RED_STAINED_GLASS_PANE).name(" ").make();
 
         return super.getItemAt(slot);
-    }*/
+    }
 
-
-	/*@Override
+	@Override
 	protected boolean isActionAllowed(MenuClickLocation location, int slot, @Nullable ItemStack clicked, @Nullable ItemStack cursor, InventoryAction action) {
 		if (action == InventoryAction.MOVE_TO_OTHER_INVENTORY)
 			return false;
@@ -126,9 +125,9 @@ public class MenuOne extends Menu {
 			return true;
 
 		return super.isActionAllowed(location, slot, clicked, cursor, action);
-	}*/
+	}
 
-    /*@Override
+    @Override
     protected void onMenuClose(Player player, Inventory inventory) {
         YamlConfig config; // TODO you need to create a config in another class and then link to it here
 
@@ -142,7 +141,7 @@ public class MenuOne extends Menu {
         }
 
         config.save();
-    }*/
+    }
 
 	@Override
 	protected String[] getInfo() {
@@ -181,4 +180,4 @@ public class MenuOne extends Menu {
 			};
 		}
 	}
-}
+}*/

@@ -177,12 +177,12 @@
             <version>1.20.6-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.github.kangarko</groupId>
             <artifactId>Foundation</artifactId>
             <version>6.7.15</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
         <!--<dependency>
             <groupId>spigot</groupId>
             <artifactId>spigot-server</artifactId>

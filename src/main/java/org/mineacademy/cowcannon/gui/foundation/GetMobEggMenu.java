@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon.gui.foundation;
+/*package org.mineacademy.cowcannon.gui.foundation;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -19,7 +19,7 @@ public class GetMobEggMenu extends MenuPagged<EntityType> {
 
 		this.setTitle("Get Mob Egg");
 	}
- 
+
 
 	@Override
 	protected ItemStack convertToItemStack(EntityType item) {
@@ -35,4 +35,4 @@ public class GetMobEggMenu extends MenuPagged<EntityType> {
 
 		this.animateTitle("&2Egg received!");
 	}
-}
+}*/
