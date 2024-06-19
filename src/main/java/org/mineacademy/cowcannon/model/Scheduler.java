@@ -1,13 +1,24 @@
 package org.mineacademy.cowcannon.model;
 
-import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
 import org.mineacademy.cowcannon.CowCannon;
 
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
+
 public final class Scheduler {
 
-	private static final boolean isFolia = Bukkit.getVersion().contains("Folia");
+	private static boolean isFolia;
+
+	static {
+		try {
+			Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+			isFolia = true;
+
+		} catch (final ClassNotFoundException e) {
+			isFolia = false;
+		}
+	}
 
 	public static void run(Runnable runnable) {
 		if (isFolia)
