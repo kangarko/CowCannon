@@ -1,59 +1,29 @@
 package org.mineacademy.cowcannon;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
+import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.mineacademy.cowcannon.command.AiCommand;
-import org.mineacademy.cowcannon.command.BungeeCommand;
-import org.mineacademy.cowcannon.command.ButterflyCommand;
-import org.mineacademy.cowcannon.command.CowCommand;
-import org.mineacademy.cowcannon.command.CrawlCommand;
-import org.mineacademy.cowcannon.command.CustomItemCommand;
-import org.mineacademy.cowcannon.command.DisplayEntityCommand;
-import org.mineacademy.cowcannon.command.EconomyCommand;
-import org.mineacademy.cowcannon.command.EmailCommand;
-import org.mineacademy.cowcannon.command.FlyCommand;
-import org.mineacademy.cowcannon.command.GiantCommand;
-import org.mineacademy.cowcannon.command.GuiCommand;
-import org.mineacademy.cowcannon.command.HologramCommand;
-import org.mineacademy.cowcannon.command.LocaleCommand;
-import org.mineacademy.cowcannon.command.PsychoCommand;
-import org.mineacademy.cowcannon.command.ReadCommand;
-import org.mineacademy.cowcannon.command.RegionCommand;
-import org.mineacademy.cowcannon.command.TagCommand;
-import org.mineacademy.cowcannon.command.ToastCommand;
-import org.mineacademy.cowcannon.command.TradeCommand;
-import org.mineacademy.cowcannon.command.VanishCommand;
+import org.mineacademy.cowcannon.command.*;
 import org.mineacademy.cowcannon.hook.CowEconomy;
 import org.mineacademy.cowcannon.hook.DiscordSRVHook;
 import org.mineacademy.cowcannon.hook.PlaceholderAPIHook;
 import org.mineacademy.cowcannon.hook.ProtocolLibHook;
-import org.mineacademy.cowcannon.listener.AiListener;
-import org.mineacademy.cowcannon.listener.ChatListener;
-import org.mineacademy.cowcannon.listener.CrawlListener;
-import org.mineacademy.cowcannon.listener.EntityListener;
-import org.mineacademy.cowcannon.listener.GuiListener;
-import org.mineacademy.cowcannon.listener.HealthTagListener;
-import org.mineacademy.cowcannon.listener.InventoryListener;
-import org.mineacademy.cowcannon.listener.LaserPointerListener;
-import org.mineacademy.cowcannon.listener.PlayerListener;
-import org.mineacademy.cowcannon.listener.RegionListener;
-import org.mineacademy.cowcannon.model.Board;
-import org.mineacademy.cowcannon.model.Bungee;
-import org.mineacademy.cowcannon.model.CustomRecipe;
-import org.mineacademy.cowcannon.model.Regions;
-import org.mineacademy.cowcannon.model.Scheduler;
+import org.mineacademy.cowcannon.listener.*;
+import org.mineacademy.cowcannon.model.*;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.task.ButterflyTask;
 import org.mineacademy.cowcannon.task.ItemPickupTask;
 import org.mineacademy.cowcannon.task.LaserPointerTask;
 import org.mineacademy.cowcannon.task.TablistTask;
+import org.mineacademy.fo.plugin.SimplePlugin;
 
-public final class CowCannon extends JavaPlugin /*SimplePlugin*/ {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
+
+public final class CowCannon extends /*JavaPlugin*/ SimplePlugin {
+
+	@Getter
 	private static final Map<UUID, String> playerTags = new HashMap<>();
 
 	private Scheduler.Task task;
@@ -64,7 +34,7 @@ public final class CowCannon extends JavaPlugin /*SimplePlugin*/ {
 	private Scheduler.Task task6;
 
 	@Override
-	public void onEnable() { //onPluginStart() {
+	public void onPluginStart() {
 
 		// Updated for the disappearance of safeguard in 1.20.5+ on Paper. Supports all versions including legacy and Spigot.
 		final String bukkitVersion = Bukkit.getServer().getBukkitVersion(); // 1.20.6-R0.1-SNAPSHOT
@@ -155,7 +125,7 @@ public final class CowCannon extends JavaPlugin /*SimplePlugin*/ {
 	}
 
 	@Override
-	public void onDisable() { //onPluginStop() {
+	public void onPluginStop() {
 
 		if (task != null)
 			task.cancel();
@@ -180,10 +150,6 @@ public final class CowCannon extends JavaPlugin /*SimplePlugin*/ {
 
 		this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
 		this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
-	}
-
-	public static Map<UUID, String> getPlayerTags() {
-		return playerTags;
 	}
 
 	public static CowCannon getInstance() {
