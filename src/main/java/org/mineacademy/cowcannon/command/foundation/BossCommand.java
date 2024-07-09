@@ -1,15 +1,17 @@
-package org.mineacademy.cowcannon.command.foundation;
-
-import java.util.List;
+//
+// Now implemented as a boss command group
+//
+/*package org.mineacademy.cowcannon.command.foundation;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.mineacademy.fo.ItemUtil;
-import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.SimpleCommand;
 import org.mineacademy.fo.remain.CompMetadata;
 
-@AutoRegister
+import java.util.List;
+
+//@AutoRegister
 public final class BossCommand extends SimpleCommand {
 
 	public BossCommand() {
@@ -59,4 +61,4 @@ public final class BossCommand extends SimpleCommand {
 
 		return NO_COMPLETE;
 	}
-}
+}*/
