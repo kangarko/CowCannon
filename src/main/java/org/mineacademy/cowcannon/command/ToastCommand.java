@@ -1,5 +1,9 @@
 package org.mineacademy.cowcannon.command;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -7,18 +11,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.mineacademy.cowcannon.model.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public final class ToastCommand implements CommandExecutor, TabCompleter {
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
 		if (!(sender instanceof Player)) {
 			sender.sendMessage(ChatColor.RED + "Only players can use this command!");
@@ -64,7 +62,7 @@ public final class ToastCommand implements CommandExecutor, TabCompleter {
 	}
 
 	@Override
-	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 		final List<String> tab = new ArrayList<>();
 
 		switch (args.length) {

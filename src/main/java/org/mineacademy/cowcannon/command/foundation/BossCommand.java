@@ -34,7 +34,7 @@ public final class BossCommand extends SimpleCommand {
 			Entity spawned = this.getPlayer().getWorld().spawnEntity(this.getPlayer().getLocation(), type);
 
 			CompMetadata.setMetadata(spawned, "CustomBoss", "true");
-			this.tellSuccess("Spawned a custom boss of type " + ItemUtil.bountifyCapitalized(type));
+			this.tellSuccess("Spawned a custom boss of type " + ItemUtil.bountify(type));
 
 		} else if ("info".equals(param)) {
 			Entity lookedAt = this.getPlayer().getTargetEntity(5);

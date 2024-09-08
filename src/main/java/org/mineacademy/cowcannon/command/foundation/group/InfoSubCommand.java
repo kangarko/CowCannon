@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon.command.foundation.group;
+/*package org.mineacademy.cowcannon.command.foundation.group;
 
 import org.bukkit.entity.Entity;
 import org.mineacademy.fo.remain.CompMetadata;
@@ -20,3 +20,4 @@ public final class InfoSubCommand extends BossSubCommand {
 		this.tellInfo("This entity is a custom boss: " + (isBoss ? "&ayes" : "&cno"));
 	}
 }
+*/

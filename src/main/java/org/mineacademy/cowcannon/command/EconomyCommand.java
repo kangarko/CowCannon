@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.jetbrains.annotations.NotNull;
+
 import org.mineacademy.cowcannon.CowCannon;
 import org.mineacademy.cowcannon.hook.DiscordSRVHook;
 import org.mineacademy.cowcannon.hook.VaultHook;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public final class EconomyCommand implements CommandExecutor, TabCompleter {
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand( CommandSender sender,  Command command,  String label,  String[] args) {
 
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("Only players can use this command!");
@@ -107,7 +107,7 @@ public final class EconomyCommand implements CommandExecutor, TabCompleter {
 	}
 
 	@Override
-	public java.util.List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+	public java.util.List<String> onTabComplete( CommandSender sender,  Command command,  String alias,  String[] args) {
 
 		if (args.length == 1)
 			return Arrays.asList("view", "take", "give").stream().filter(s -> s.startsWith(args[0])).collect(Collectors.toList());

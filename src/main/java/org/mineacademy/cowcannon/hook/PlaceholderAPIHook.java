@@ -1,35 +1,34 @@
 package org.mineacademy.cowcannon.hook;
 
-import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import me.clip.placeholderapi.expansion.Relational;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import me.clip.placeholderapi.expansion.Relational;
 
 public class PlaceholderAPIHook extends PlaceholderExpansion implements Relational {
 
 	@Override
-	public @NotNull String getIdentifier() {
+	public String getIdentifier() {
 		return "cowcannon";
 	}
 
 	@Override
-	public @NotNull String getAuthor() {
+	public String getAuthor() {
 		return "MineAcademy";
 	}
 
 	@Override
-	public @NotNull String getVersion() {
+	public String getVersion() {
 		return "1.0.0";
 	}
 
 	@Override
-	public @Nullable String onRequest(OfflinePlayer offlinePlayer, @NotNull String params) {
+	public String onRequest(OfflinePlayer offlinePlayer, String params) {
 
 		if (offlinePlayer != null && offlinePlayer.isOnline()) {
-			Player player = offlinePlayer.getPlayer();
+			final Player player = offlinePlayer.getPlayer();
 
 			if (params.equalsIgnoreCase("demo")) {
 				return "Hello World";
@@ -47,7 +46,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion implements Relation
 
 	@Override
 	public String onPlaceholderRequest(Player first, Player second, String params) {
-		
+
 		if (first != null && second != null) {
 			if (params.equalsIgnoreCase("status")) {
 

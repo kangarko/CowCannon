@@ -12,7 +12,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.jetbrains.annotations.NotNull;
+
 import org.mineacademy.cowcannon.CowCannon;
 import org.mineacademy.cowcannon.util.Common;
 import org.mineacademy.cowcannon.util.EmailUtil;
@@ -25,7 +25,7 @@ import java.nio.file.Files;
 public final class EmailCommand implements CommandExecutor {
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand( CommandSender sender,  Command command,  String label,  String[] args) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("Only players can use this command!");
 

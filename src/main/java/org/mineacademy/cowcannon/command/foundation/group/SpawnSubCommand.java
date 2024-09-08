@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon.command.foundation.group;
+/*package org.mineacademy.cowcannon.command.foundation.group;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -23,7 +23,7 @@ public final class SpawnSubCommand extends BossSubCommand {
 		Entity spawned = this.getPlayer().getWorld().spawnEntity(this.getPlayer().getLocation(), type);
 
 		CompMetadata.setMetadata(spawned, "CustomBoss", "true");
-		this.tellSuccess("[from subcommand] Spawned a custom boss of type " + ItemUtil.bountifyCapitalized(type));
+		this.tellSuccess("[from subcommand] Spawned a custom boss of type " + ItemUtil.bountify(type));
 	}
 
 	@Override
@@ -35,3 +35,4 @@ public final class SpawnSubCommand extends BossSubCommand {
 		return NO_COMPLETE;
 	}
 }
+*/

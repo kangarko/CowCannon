@@ -6,14 +6,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.persistence.PersistentDataType;
-import org.jetbrains.annotations.NotNull;
+
 import org.mineacademy.cowcannon.util.Common;
 import org.mineacademy.cowcannon.util.Keys;
 
 public final class AiCommand implements CommandExecutor {
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand( CommandSender sender,  Command command,  String label,  String[] args) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("Only players can use this command!");
 

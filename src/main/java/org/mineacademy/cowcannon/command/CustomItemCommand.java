@@ -13,13 +13,13 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.jetbrains.annotations.NotNull;
+
 import org.mineacademy.cowcannon.util.Keys;
 
 public final class CustomItemCommand implements CommandExecutor {
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+	public boolean onCommand( CommandSender sender,  Command command,  String s,  String[] strings) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("Only players can use this command!");
 

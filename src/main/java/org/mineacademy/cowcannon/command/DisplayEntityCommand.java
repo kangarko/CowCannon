@@ -8,12 +8,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Display.Billboard;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
-import org.jetbrains.annotations.NotNull;
+
 
 public final class DisplayEntityCommand implements CommandExecutor {
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+	public boolean onCommand( CommandSender sender,  Command command,  String s,  String[] strings) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("Only players can use this command!");
 

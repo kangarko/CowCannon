@@ -1,4 +1,4 @@
-package org.mineacademy.cowcannon.command.foundation.group;
+/*package org.mineacademy.cowcannon.command.foundation.group;
 
 import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.SimpleCommandGroup;
@@ -17,3 +17,4 @@ public final class BossCommandGroup extends SimpleCommandGroup {
 		this.registerSubcommand(BossSubCommand.class);
 	}
 }
+*/

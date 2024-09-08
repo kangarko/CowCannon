@@ -1,5 +1,10 @@
 package org.mineacademy.cowcannon.command;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,20 +15,13 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.mineacademy.cowcannon.setting.CowSettings;
 import org.mineacademy.cowcannon.util.Keys;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public final class CowCommand implements CommandExecutor, TabExecutor {
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("Only players can use this command!");
@@ -40,7 +38,7 @@ public final class CowCommand implements CommandExecutor, TabExecutor {
 				try {
 					type = EntityType.valueOf(args[1].toUpperCase());
 
-				} catch (IllegalArgumentException ex) {
+				} catch (final IllegalArgumentException ex) {
 					sender.sendMessage("Invalid entity type: " + args[1]);
 
 					return true;
@@ -64,8 +62,8 @@ public final class CowCommand implements CommandExecutor, TabExecutor {
 		//      	args[0]  args[1] 	args[2] 	args[3] 	args[4]
 		// /cow 	baby	 world	 	this	 	is	 		pretty
 
-		Player player = (Player) sender;
-		LivingEntity entity = (LivingEntity) player.getWorld().spawnEntity(player.getLocation(), CowSettings.getInstance().getExplodingType());
+		final Player player = (Player) sender;
+		final LivingEntity entity = (LivingEntity) player.getWorld().spawnEntity(player.getLocation(), CowSettings.getInstance().getExplodingType());
 
 		if (args.length == 1 && args[0].equalsIgnoreCase("baby")) {
 			if (entity instanceof Ageable)
@@ -80,7 +78,7 @@ public final class CowCommand implements CommandExecutor, TabExecutor {
 
 		try {
 			entity.getPersistentDataContainer().set(Keys.CUSTOM_COW, PersistentDataType.BOOLEAN, true);
-		} catch (LinkageError t) {
+		} catch (final LinkageError t) {
 			// have an alternative code for old MC version
 		}
 
@@ -91,7 +89,7 @@ public final class CowCommand implements CommandExecutor, TabExecutor {
 	}
 
 	@Override
-	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
 		System.out.println("Args size: " + args.length);
 
@@ -99,7 +97,7 @@ public final class CowCommand implements CommandExecutor, TabExecutor {
 			return Arrays.asList("baby", "set");
 
 		if (args.length == 2) {
-			String name = args[1].toUpperCase();
+			final String name = args[1].toUpperCase();
 
 			return Arrays.stream(EntityType.values())
 					.filter(type -> type.isSpawnable() && type.isAlive() && type.name().startsWith(name))

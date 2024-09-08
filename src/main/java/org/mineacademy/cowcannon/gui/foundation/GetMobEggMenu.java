@@ -4,13 +4,13 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
-import org.mineacademy.fo.menu.MenuPagged;
+import org.mineacademy.fo.menu.MenuPaged;
 import org.mineacademy.fo.menu.model.ItemCreator;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class GetMobEggMenu extends MenuPagged<EntityType> {
+public class GetMobEggMenu extends MenuPaged<EntityType> {
 
 	public GetMobEggMenu() {
 		super(9 * 3, Arrays.stream(EntityType.values())

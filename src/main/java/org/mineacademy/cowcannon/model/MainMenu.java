@@ -112,7 +112,7 @@ public final class MainMenu extends Menu {
 		}
 	}
 
-	private class SelectMobEggsMenu extends MenuPagged<EntityType> {
+	private class SelectMobEggsMenu extends MenuPaged<EntityType> {
 
 		SelectMobEggsMenu() {
 			super(MainMenu.this, Arrays.asList(EntityType.values())
@@ -127,7 +127,7 @@ public final class MainMenu extends Menu {
 		@Override
 		protected ItemStack convertToItemStack(EntityType item) {
 			return ItemCreator.ofEgg(item,
-					"&6&l" + ItemUtil.bountifyCapitalized(item.name()), // EXP_ORB -> Exp Orb
+					"&6&l" + ItemUtil.bountify(item.name()), // EXP_ORB -> Exp Orb
 					"",
 					"Click to obtain the egg").make();
 		}
@@ -156,7 +156,7 @@ public final class MainMenu extends Menu {
 		}
 
 		@Override
-		protected void onMenuClose(StrictMap<Integer, ItemStack> items) {
+		protected void onMenuClose(Map<Integer, ItemStack> items) {
 			// TODO custom logic > save items to your config / db
 		}
 
