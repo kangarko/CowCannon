@@ -49,6 +49,6 @@ public class MenuListener implements Listener {
 
 	@EventHandler
 	public void onPlayerLeave(PlayerQuitEvent event) {
-		// TODO homework
+		// Implement as homework
 	}
 }

@@ -1,10 +1,11 @@
 package org.mineacademy.cowcannon.model;
 
-import com.google.gson.Gson;
-import com.theokanning.openai.completion.chat.ChatCompletionChoice;
-import com.theokanning.openai.completion.chat.ChatCompletionRequest;
-import com.theokanning.openai.completion.chat.ChatMessage;
-import com.theokanning.openai.service.OpenAiService;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -15,11 +16,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.mineacademy.cowcannon.CowCannon;
 import org.mineacademy.cowcannon.util.Common;
 
-import java.time.Duration;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.gson.Gson;
+import com.theokanning.openai.completion.chat.ChatCompletionChoice;
+import com.theokanning.openai.completion.chat.ChatCompletionRequest;
+import com.theokanning.openai.completion.chat.ChatMessage;
+import com.theokanning.openai.service.OpenAiService;
 
 public class Conversation {
 
@@ -179,12 +180,12 @@ public class Conversation {
 					return;
 				}
 
-				String[] rawJson = choices.get(0).getMessage().getContent().trim().split("\n");
+				final String[] rawJson = choices.get(0).getMessage().getContent().trim().split("\n");
 
 				final String[] json = new String[rawJson.length - 2];
 				System.arraycopy(rawJson, 1, json, 0, json.length);
 
-				final HashMap<String, Object> map = GSON.fromJson(String.join("\n", json), HashMap.class);
+				final Map<String, Object> map = GSON.fromJson(String.join("\n", json), HashMap.class);
 
 				final String answer = map.get("answer").toString();
 				final String type = map.get("type").toString();

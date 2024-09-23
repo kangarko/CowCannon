@@ -157,7 +157,7 @@ public final class MainMenu extends Menu {
 
 		@Override
 		protected void onMenuClose(Map<Integer, ItemStack> items) {
-			// TODO custom logic > save items to your config / db
+			// Implement your custom logic > save items to your config / db
 		}
 
 		@Override

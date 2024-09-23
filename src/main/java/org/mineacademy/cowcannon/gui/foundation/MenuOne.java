@@ -105,7 +105,7 @@ public class MenuOne extends Menu {
     /*@Override
     public ItemStack getItemAt(int slot) {
 
-        YamlConfiguration bukkitConfig; // TODO you need to create a config in another class and then link to it here
+        YamlConfiguration bukkitConfig; // You need to create a config in another class and then link to it here
 
         if (bukkitConfig.isSet("inventory." + slot))
             return bukkitConfig.getItemStack("inventory." + slot);
@@ -129,7 +129,7 @@ public class MenuOne extends Menu {
 
     @Override
     protected void onMenuClose(Player player, Inventory inventory) {
-        YamlConfig config; // TODO you need to create a config in another class and then link to it here
+        YamlConfig config; // You need to create a config in another class and then link to it here
 
         ItemStack[] content = inventory.getContents();
         for (int i = 0; i < content.length; i++) {

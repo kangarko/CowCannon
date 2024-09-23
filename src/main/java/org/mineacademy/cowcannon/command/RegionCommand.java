@@ -15,7 +15,7 @@ import org.mineacademy.cowcannon.model.Regions;
 
 public final class RegionCommand implements CommandExecutor {
 
-	// TODO Move into PlayerCache
+	// Homework: Move into PlayerCache
 	private final Map<UUID, Tuple<Location, Location>> selections = new HashMap<>();
 
 	@Override
@@ -32,12 +32,12 @@ public final class RegionCommand implements CommandExecutor {
 			return true;
 		}
 
-		Regions regions = Regions.getInstance();
+		final Regions regions = Regions.getInstance();
 
-		Player player = (Player) sender;
-		String param = args[0].toLowerCase();
+		final Player player = (Player) sender;
+		final String param = args[0].toLowerCase();
 
-		Tuple<Location, Location> selection = selections.getOrDefault(player.getUniqueId(), new Tuple<>(null, null));
+		final Tuple<Location, Location> selection = selections.getOrDefault(player.getUniqueId(), new Tuple<>(null, null));
 
 		if ("pos1".equals(param)) {
 			selection.setFirst(player.getLocation());
@@ -65,13 +65,13 @@ public final class RegionCommand implements CommandExecutor {
 			}
 
 			/*File file = new File(plugin.getDataFolder(), "schematic/" + args[1] + ".schem");
-			
+
 			if (!file.getParentFile().exists())
 				file.getParentFile().mkdirs();
-			
+
 			WorldEditHook.save(selection.getFirst(), selection.getSecond(), file);*/
 
-			String name = args[1];
+			final String name = args[1];
 
 			if (regions.findRegion(name) != null) {
 				sender.sendMessage(ChatColor.RED + "Region by this name already exists.");
@@ -87,7 +87,7 @@ public final class RegionCommand implements CommandExecutor {
 			sender.sendMessage(ChatColor.GOLD + "Installed regions: " + String.join(", ", regions.getRegionsNames()));
 
 		} else if ("current".equals(param)) {
-			Region standingIn = regions.findRegion(player.getLocation());
+			final Region standingIn = regions.findRegion(player.getLocation());
 
 			sender.sendMessage(ChatColor.GOLD + "You are standing in region: "
 					+ (standingIn == null ? "none" : standingIn.getName()));
@@ -95,18 +95,18 @@ public final class RegionCommand implements CommandExecutor {
 			/*} else if ("paste".equals(param)) {
 				if (args.length != 2) {
 					sender.sendMessage("§8[§6🛑§8] §7Usage: /region paste <name>");
-			
+
 					return true;
 				}
-			
+
 				File file = new File(plugin.getDataFolder(), "schematic/" + args[1] + ".schem");
-			
+
 				if (!file.exists()) {
 					sender.sendMessage("§8[§c❌§8] §7Schematic not found!");
-			
+
 					return true;
 				}
-			
+
 				WorldEditHook.paste(player.getLocation(), file);
 				sender.sendMessage("§8[§a✔§8] §7Schematic pasted at " + player.getLocation());*/
 

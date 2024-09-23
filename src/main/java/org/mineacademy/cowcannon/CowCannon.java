@@ -83,7 +83,7 @@ public final class CowCannon extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 		getServer().getPluginManager().registerEvents(new AiListener(), this);
 		getServer().getPluginManager().registerEvents(new RegionListener(), this);
-		//getServer().getPluginManager().registerEvents(new MenuListener(), this); // TODO enable for custom menu system if NOT using Foundation
+		//getServer().getPluginManager().registerEvents(new MenuListener(), this); // Uncomment to enable for custom menu system if NOT using Foundation
 
 		if (version >= 14)
 			getServer().getPluginManager().registerEvents(new CrawlListener(), this);
@@ -146,7 +146,7 @@ public final class CowCannon extends JavaPlugin {
 		task3 = Scheduler.runTimer(LaserPointerTask.getInstance(), 0, 1);
 		task4 = Scheduler.runTimer(TablistTask.getInstance(), 0, 20);
 		task5 = Scheduler.runTimer(ItemPickupTask.getInstance(), 0, 2);
-		//task6 = Scheduler.runTimer(MessageBroadcasterTask.getInstance(), 0, 20 * 30); // TODO enable for timed messages broadcaster
+		//task6 = Scheduler.runTimer(MessageBroadcasterTask.getInstance(), 0, 20 * 30); // Uncomment to enable for timed messages broadcaster
 
 		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new Bungee());
