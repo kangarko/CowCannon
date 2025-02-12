@@ -5,9 +5,10 @@ api-version: '1.13'
 softdepend: [ Vault, ProtocolLib, PlaceholderAPI, DiscordSRV ]
 folia-supported: true
 libraries:
-  - org.jsoup:jsoup:1.16.1
+  - org.jsoup:jsoup:1.18.3
   - com.theokanning.openai-gpt3-java:service:0.18.2
   - com.sendgrid:sendgrid-java:4.10.1
+  - com.sendgrid:sendgrid-java:4.10.3
 commands:
   cow:
     description: "Spawn an exploding cow"
