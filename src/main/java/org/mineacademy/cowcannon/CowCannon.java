@@ -19,6 +19,7 @@ import org.mineacademy.cowcannon.command.FlyCommand;
 import org.mineacademy.cowcannon.command.GiantCommand;
 import org.mineacademy.cowcannon.command.GuiCommand;
 import org.mineacademy.cowcannon.command.HologramCommand;
+import org.mineacademy.cowcannon.command.JavascriptCommand;
 import org.mineacademy.cowcannon.command.LocaleCommand;
 import org.mineacademy.cowcannon.command.PsychoCommand;
 import org.mineacademy.cowcannon.command.ReadCommand;
@@ -122,6 +123,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("vanish").setExecutor(new VanishCommand());
 		getCommand("fly").setExecutor(new FlyCommand());
 		getCommand("ai").setExecutor(new AiCommand());
+		getCommand("javascript").setExecutor(new JavascriptCommand());
 
 		CowSettings.getInstance().load();
 
