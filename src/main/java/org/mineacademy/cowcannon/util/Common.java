@@ -1,9 +1,11 @@
 package org.mineacademy.cowcannon.util;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 
 public final class Common {
 
@@ -14,9 +16,12 @@ public final class Common {
 		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(colorize(message)));
 	}
 
-	public static void tell(Player player, String... messages) {
+	public static void tell(CommandSender sender, String... messages) {
 		for (final String message : messages)
-			player.spigot().sendMessage(TextComponent.fromLegacyText(colorize(message)));
+			if (sender instanceof Player)
+				((Player) sender).spigot().sendMessage(TextComponent.fromLegacyText(colorize(message)));
+			else
+				sender.sendMessage(colorize(message));
 	}
 
 	// Credits: https://github.com/SpigotMC/BungeeCord/pull/2883#issuecomment-770429978
@@ -27,7 +32,7 @@ public final class Common {
 		boolean color = false, hashtag = false, doubleTag = false;
 		char tmp; // Used in loops
 
-		for (int i = 0; i < mess.length; ) { // i increment is handled case by case for speed
+		for (int i = 0; i < mess.length;) { // i increment is handled case by case for speed
 
 			final char c = mess[i];
 
@@ -157,16 +162,16 @@ public final class Common {
 		if (color)
 			b.append(altColorChar);
 		else // color and hashtag cannot be true at the same time
-			// Append "&#" if "&#" were the last characters of the string
-			if (hashtag) {
-				b.append(altColorChar);
-				b.append('#');
-			} else // color, hashtag, and doubleTag cannot be true at the same time
+				// Append "&#" if "&#" were the last characters of the string
+		if (hashtag) {
+			b.append(altColorChar);
+			b.append('#');
+		} else // color, hashtag, and doubleTag cannot be true at the same time
 				// Append "&##" if "&##" were the last characters of the string
-				if (doubleTag) {
-					b.append(altColorChar);
-					b.append("##");
-				}
+		if (doubleTag) {
+			b.append(altColorChar);
+			b.append("##");
+		}
 
 		return b.toString();
 	}

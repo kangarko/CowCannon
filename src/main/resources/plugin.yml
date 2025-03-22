@@ -9,6 +9,8 @@ libraries:
   - com.theokanning.openai-gpt3-java:service:0.18.2
   - com.sendgrid:sendgrid-java:4.10.3
   - org.openjdk.nashorn:nashorn-core:15.6
+  - com.mysql:mysql-connector-j:9.2.0
+  - org.xerial:sqlite-jdbc:3.49.1.0
 commands:
   cow:
     description: "Spawn an exploding cow"
@@ -105,8 +107,15 @@ commands:
     description: "Test JavaScript."
     usage: "/javascript <script>"
     permission: cowcannon.command.javascript
+  database:
+    description: "Database command for viewing chat logs."
+    aliases: [ db ]
+    usage: "/database <view> <player>"
+    permission: cowcannon.command.db
 permissions:
   cowcannon.command.cow:
     default: op
   cowcannon.cow.use:
     default: true
+  cowcannon.command.db:
+    default: op

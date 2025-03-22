@@ -11,3 +11,13 @@ Tablist:
   Footer:
     - <color:#ff8045>First Footer</color>
     - <color:#b85c32>Second Footer</color>
+
+Database:
+  Type: sqlite
+  Host: localhost
+  Port: 3306
+  Database: db
+  Username: user
+  Password: pass
+  SQLite:
+    File: sqlite.db

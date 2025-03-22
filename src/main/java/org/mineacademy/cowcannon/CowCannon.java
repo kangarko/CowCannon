@@ -12,6 +12,7 @@ import org.mineacademy.cowcannon.command.ButterflyCommand;
 import org.mineacademy.cowcannon.command.CowCommand;
 import org.mineacademy.cowcannon.command.CrawlCommand;
 import org.mineacademy.cowcannon.command.CustomItemCommand;
+import org.mineacademy.cowcannon.command.DatabaseCommand;
 import org.mineacademy.cowcannon.command.DisplayEntityCommand;
 import org.mineacademy.cowcannon.command.EconomyCommand;
 import org.mineacademy.cowcannon.command.EmailCommand;
@@ -45,6 +46,7 @@ import org.mineacademy.cowcannon.listener.RegionListener;
 import org.mineacademy.cowcannon.model.Board;
 import org.mineacademy.cowcannon.model.Bungee;
 import org.mineacademy.cowcannon.model.CustomRecipe;
+import org.mineacademy.cowcannon.model.Database;
 import org.mineacademy.cowcannon.model.Regions;
 import org.mineacademy.cowcannon.model.Scheduler;
 import org.mineacademy.cowcannon.setting.CowSettings;
@@ -105,6 +107,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("trade").setExecutor(new TradeCommand());
 		getCommand("region").setExecutor(new RegionCommand());
 		getCommand("email").setExecutor(new EmailCommand());
+		getCommand("db").setExecutor(new DatabaseCommand());
 
 		if (version == 8/* || minorVersion == 20*/) {
 			//EntityRegister_1_8_8.registerEntity("DeadlyChicken", 93, EntityChicken.class, AggressiveChicken1_8_8.class);
@@ -126,6 +129,7 @@ public final class CowCannon extends JavaPlugin {
 		getCommand("javascript").setExecutor(new JavascriptCommand());
 
 		CowSettings.getInstance().load();
+		Database.getInstance().load();
 
 		if (version >= 13)
 			CustomRecipe.register();
@@ -180,6 +184,8 @@ public final class CowCannon extends JavaPlugin {
 		if (getServer().getPluginManager().getPlugin("DiscordSRV") != null)
 			DiscordSRVHook.unregister();
 
+		Database.getInstance().close();
+		
 		this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
 		this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
 	}
